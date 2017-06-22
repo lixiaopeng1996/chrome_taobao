@@ -19,6 +19,7 @@
     "scripts": ["js/jquery-1.9.1.min.js", "js/background.js"],
     "persistent": false
   },
+  "options_page":"options.html",
   "content_scripts": [
     {
       "matches": ["https://item.taobao.com/*"],
