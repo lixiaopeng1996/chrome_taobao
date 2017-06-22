@@ -1,0 +1,20 @@
+{
+  "name": "默认的配置文件",
+  "version": "0.0.1",
+  "images" : {
+    "width" : 400,
+    "height" : 400
+  },
+  "sites" : {
+     "name" : "ccshop",
+     "site_api_info" : "http://ccshop.dev/api/product/insert",
+     "site_api_image" : "http://ccshop.dev/rhsatmeljmog",
+     "site_api_key" : "fa94h9a2y5bv43n2zg3s"
+  },
+  "options" : [
+
+  ],
+  "features" : [
+    "适用年龄", "年龄", "季节", "年份季节", "适用季节", "风格", "面料"
+  ]
+}
