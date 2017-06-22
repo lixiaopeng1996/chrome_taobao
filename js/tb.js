@@ -15,15 +15,6 @@ $(function() {
     console.log(tb_store);
 
 
-    chrome.runtime.sendMessage('Hello', function(response){
-        console.log(response);
-    });
-
-    Cookies.set('tb_pname', tb_pname);
-    Cookies.set('tb_list_price', tb_list_price);
-    Cookies.set('tb_price', tb_price);
-    Cookies.set('tb_source', tb_source);
-    Cookies.set('tb_store', tb_store);
 
 
 
