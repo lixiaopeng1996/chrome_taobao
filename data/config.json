@@ -1,8 +1,8 @@
 {
-  "name": "默认的配置文件",
+  "name": "默认的配置文件for hassyon",
   "version": "0.0.1",
   "images" : {
-    "width" : 400,
+    "width" : 500,
     "height" : 400
   },
   "shop_id_show" : "no",
