@@ -3,7 +3,6 @@ chrome.storage.local.get('product_name', function (result) {
     $("#product-name").val(channels);
 });
 
-
 chrome.storage.local.get('product_list_price', function (result) {
     channels = result.product_list_price;
     $("#product-list-price").val(channels);
@@ -28,7 +27,7 @@ chrome.storage.local.get('product_option_colors', function (result) {
     channels = result.product_option_colors;
     var colorsBody = $("#colors");
     $.each(channels, function (key,item) {
-        html = '<div class="form-group"><input type="text" value="'+item+'" class="form-control"></div>';
+        html = '<div class="form-group"><input type="text" value="'+item+'" class="form-control"><span class="glyphicon glyphicon-remove-circle remove-option"></span></div>';
         colorsBody.append(html);
     });
 });
@@ -37,7 +36,8 @@ chrome.storage.local.get('product_option_sizes', function (result) {
     channels = result.product_option_sizes;
     var sizesBody = $("#sizes");
     $.each(channels, function (key,item) {
-        html = '<div class="form-group"><input type="text" value="'+item+'" class="form-control"></div>';
+        //  glyphicon glyphicon-remove-circle
+        html = '<div class="form-group"><input type="text" value="'+item+'" class="form-control"><span class="glyphicon glyphicon-remove-circle remove-option"></span></div>';
         sizesBody.append(html);
     });
 });
@@ -56,5 +56,13 @@ chrome.storage.local.get('product_features', function (result) {
     });
 });
 
+
+
+$(function() {
+    $(".remove-option").click(function () {
+        alert(1);
+    });
+
+});
 
 

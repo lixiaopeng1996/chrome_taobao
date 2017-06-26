@@ -23,11 +23,11 @@
   "content_scripts": [
     {
       "matches": ["https://item.taobao.com/*"],
-      "js": ["js/jquery-1.9.1.min.js", "js/js.cookie.js", "js/tb.js"]
+      "js": ["js/jquery-1.9.1.min.js", "js/tb.js"]
     },
     {
       "matches": ["https://detail.tmall.com/*"],
-      "js": ["js/jquery-1.9.1.min.js", "js/js.cookie.js", "js/tm.js"]
+      "js": ["js/jquery-1.9.1.min.js", "js/tm.js"]
     }
   ],
   "permissions": [
