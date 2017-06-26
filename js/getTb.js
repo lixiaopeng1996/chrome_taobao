@@ -64,9 +64,50 @@ $(function() {
         $(this).parent().remove();
     });
     $("#submit-info").click(function () {
-        // 组装数据
-        alert(1);
+         submitInfo();
     });
 });
+
+function submitInfo(){
+
+    var url = '';
+    var apiUser = '';
+    var apiKey = '';
+    var shopId = $("#product-shop-id").val();
+    var name = $("#product-name").val();
+    var slug = $("#product-slug").val();
+    var status = $("").val();
+    var source = $("#product-source").val();
+    var listPrice = $("#product-list-price").val();
+    var price = $("#product-price").val();
+    var amount = $("#product-store").val();
+    var options = $("").val();
+    var features = $("").val();
+
+
+
+
+    $.ajax({
+        type:"POST",
+        url:"testLogin.aspx",
+        data:{Name:"sanmao",Password:"sanmaoword"},
+        datatype: "html",
+        beforeSend:function(){$("#msg").html("logining");},
+
+        success:function(data){
+            $("#msg").html(decodeURI(data));
+        },
+        complete: function(XMLHttpRequest, textStatus){
+            alert(XMLHttpRequest.responseText);
+            alert(textStatus);
+        },
+        error: function(){
+        }
+    });
+}
+
+
+
+
 
 

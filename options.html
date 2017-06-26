@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="js/js.cookie.js"></script>
-    <script type="text/javascript" src="js/getTb.js"></script>
+    <script type="text/javascript" src="js/options.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <title>淘宝采集--个性化你的应用</title>
@@ -15,7 +15,7 @@
         <h1>配置页面  <small>for you</small></h1>
         <div style="padding-bottom:21px;">
             <button class="btn btn-default pull-right btn-sm">保存我的配置</button>
-            <button style="margin-right: 3px;" class="btn btn-default pull-right btn-sm">初始化默认配置</button>
+            <button style="margin-right: 3px;" class="btn btn-default pull-right btn-sm" id="default-options">初始化默认配置</button>
         </div>
     </div>
     <div class="row">
@@ -41,6 +41,17 @@
                     </label>
                     <label class="radio-inline">
                         <input type="radio" name="shop_id_show" id="shop_id_no" value="no"> 不显示
+                    </label>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">产品是否直接发布</div>
+                <div class="panel-body">
+                    <label class="radio-inline">
+                        <input type="radio" name="publish" id="publish_yes" value="yes"> 发布
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="publish" id="publish_no" value="no"> 不发布
                     </label>
                 </div>
             </div>

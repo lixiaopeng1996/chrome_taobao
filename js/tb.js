@@ -60,7 +60,7 @@ $(function() {
         var colors = new Array();
         $(".J_TSaleProp.tb-img > li > a > span").each(function(){
             colors.push($(this).text());
-        })
+        });
         return colors;
     }
 
@@ -68,7 +68,7 @@ $(function() {
         var sizes =  new Array();
         $(".J_TMySizeProp.J_Prop_measurement ul > li>a>span").each(function(){
             sizes.push($(this).text());
-        })
+        });
         return sizes;
     }
 

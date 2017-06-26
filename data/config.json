@@ -5,6 +5,8 @@
     "width" : 400,
     "height" : 400
   },
+  "shop_id_show" : "no",
+  "publish" : "no",
   "sites" : {
      "name" : "ccshop",
      "site_api_info" : "http://ccshop.dev/api/product/insert",
