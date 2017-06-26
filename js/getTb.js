@@ -63,6 +63,10 @@ $(function() {
     $(document.body).on('click', '.remove-feature', function() {
         $(this).parent().remove();
     });
+    $("#submit-info").click(function () {
+        // 组装数据
+        alert(1);
+    });
 });
 
 
