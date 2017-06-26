@@ -4,3 +4,9 @@
     top: -38px;
     cursor: pointer;
 }
+.remove-feature{
+    position: absolute;
+    right: 10px;
+    top:-5px;
+    cursor: pointer;
+}

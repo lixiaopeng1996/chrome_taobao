@@ -47,7 +47,7 @@ chrome.storage.local.get('product_features', function (result) {
     var featureBody = $("#feature");
     $.each(channels, function (key,item) {
         var fea = item.split(':');
-        html = '<div class="col-md-2"><div class="form-group"><input type="text" value="'+fea[0]+'" class="form-control"></div><div class="form-group"><input type="text" value="'+fea[1]+'" class="form-control"></div></div>';
+        html = '<div class="col-md-2"><span class="glyphicon glyphicon-remove-circle remove-feature"></span><div class="form-group"><input type="text" value="'+fea[0]+'" class="form-control"></div><div class="form-group"><input type="text" value="'+fea[1]+'" class="form-control"></div></div>';
 
         featureBody.append(html);
         console.log(fea);
@@ -56,13 +56,13 @@ chrome.storage.local.get('product_features', function (result) {
     });
 });
 
-
-
 $(function() {
-    $(".remove-option").click(function () {
-        alert(1);
+    $(document.body).on('click', '.remove-option', function() {
+        $(this).parent().remove();
     });
-
+    $(document.body).on('click', '.remove-feature', function() {
+        $(this).parent().remove();
+    });
 });
 
 
