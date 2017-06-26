@@ -71,6 +71,7 @@ $(function() {
 function submitInfo(){
 
     var url = '';
+
     var apiUser = '';
     var apiKey = '';
     var shopId = $("#product-shop-id").val();

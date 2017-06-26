@@ -22,7 +22,6 @@ $(function () {
 
     chrome.storage.local.get('publish', function (result) {
         channels = result.publish;
-
         if (channels == "yes") {
             $("#publish_yes").attr("checked", "true");
         } else {
@@ -52,21 +51,18 @@ $(function () {
 
     chrome.storage.local.get('option_filter', function (result) {
         channels = result.option_filter;
-        $("#option-filter").val(channels);
+        $("#option_filter").val(channels);
     });
 
     chrome.storage.local.get('feature_filter', function (result) {
         channels = result.feature_filter;
-        $("#feature-filter").val(channels);
+        $("#feature_filter").val(channels);
     });
-
 
     $("#default-options").click(function () {
         var url = './data/config.json';
         $.getJSON(url,function(result){
             $.each(result, function(i, field){
-               console.log(field);
-               console.log(i);
                if (i == "images") {
                    $("#image_height").val(field.height);
                    $("#image_width").val(field.width);
@@ -104,17 +100,51 @@ $(function () {
                }
 
                if (i == "options") {
-                   $("#option-filter").val(field.join("&"));
+                   $("#option_filter").val(field.join("&"));
                    chrome.storage.local.set({'option_filter': field.join("&")});
                }
 
                if (i == "features") {
-                   $("#feature-filter").val(field.join("&"));
+                   $("#feature_filter").val(field.join("&"));
                    chrome.storage.local.set({'feature_filter': field.join("&")});
                }
 
             });
         });
+
+    });
+
+    $("#custom-options").click(function () {
+        var image_width = $("#image_width").val();
+        chrome.storage.local.set({'image_width': image_width});
+
+        var image_height = $("#image_height").val();
+        chrome.storage.local.set({'imahe_height': image_height});
+
+        var shop_id_show = $("input[name='shop_id_show']:checked").val();
+        chrome.storage.local.set({'shop_id_show': shop_id_show});
+
+        var publish = $("input[name='publish']:checked").val();
+        console.log(publish);
+        chrome.storage.local.set({'publish': publish});
+
+        var site_name = $("#site_name").val();
+        chrome.storage.local.set({'site_name': site_name});
+
+        var site_api_info = $("#site_api_info").val();
+        chrome.storage.local.set({'site_api_info': site_api_info});
+
+        var site_api_image = $("#site_api_image").val();
+        chrome.storage.local.set({'site_api_image': site_api_image});
+
+        var site_api_key = $("#site_api_key").val();
+        chrome.storage.local.set({'site_api_key': site_api_key});
+
+        var option_filter = $("#option_filter").val();
+        chrome.storage.local.set({'option_filter': option_filter});
+
+        var feature_filter = $("#feature_filter").val();
+        chrome.storage.local.set({'feature_filter': feature_filter});
 
     });
 });
