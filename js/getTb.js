@@ -161,16 +161,17 @@ function submitInfo(){
         url:"testLogin.aspx",
         data:{Name:"sanmao",Password:"sanmaoword"},
         datatype: "html",
-        beforeSend:function(){$("#msg").html("logining");},
-
+        beforeSend:function(){
+            $("#submit-info").html("loading");
+        },
         success:function(data){
-            $("#msg").html(decodeURI(data));
+            console.log(data);
         },
         complete: function(XMLHttpRequest, textStatus){
-            alert(XMLHttpRequest.responseText);
-            alert(textStatus);
+            $("#submit-info").html("提交信息");
         },
         error: function(){
+            console.log('error');
         }
     });
 }
