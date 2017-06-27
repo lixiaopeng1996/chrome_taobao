@@ -11,6 +11,7 @@
      "name" : "ccshop",
      "site_api_info" : "http://ccshop.dev/api/product/insert",
      "site_api_image" : "http://ccshop.dev/rhsatmeljmog",
+     "site_api_user" : "apiuser",
      "site_api_key" : "fa94h9a2y5bv43n2zg3s"
   },
   "options" : [

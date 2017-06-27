@@ -33,9 +33,6 @@ $(function() {
 
 
 
-
-
-
     function getName() {
         return $(".tb-main-title").data('title');
     }

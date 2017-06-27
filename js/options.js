@@ -2,17 +2,17 @@ $(function () {
     // 页面加载
 
     chrome.storage.local.get('image_width', function (result) {
-        channels = result.image_width;
+        var channels = result.image_width;
         $("#image_width").val(channels);
     });
 
     chrome.storage.local.get('imahe_height', function (result) {
-        channels = result.imahe_height;
+        var channels = result.imahe_height;
         $("#image_height").val(channels);
     });
 
     chrome.storage.local.get('shop_id_show', function (result) {
-        channels = result.shop_id_show;
+        var channels = result.shop_id_show;
         if (channels == "yes") {
             $("#shop_id_yes").attr("checked", "true");
         } else {
@@ -21,7 +21,7 @@ $(function () {
     });
 
     chrome.storage.local.get('publish', function (result) {
-        channels = result.publish;
+        var channels = result.publish;
         if (channels == "yes") {
             $("#publish_yes").attr("checked", "true");
         } else {
@@ -30,32 +30,37 @@ $(function () {
     });
 
     chrome.storage.local.get('site_name', function (result) {
-        channels = result.site_name;
+        var channels = result.site_name;
         $("#site_name").val(channels);
     });
 
     chrome.storage.local.get('site_api_info', function (result) {
-        channels = result.site_api_info;
+        var channels = result.site_api_info;
         $("#site_api_info").val(channels);
     });
 
     chrome.storage.local.get('site_api_image', function (result) {
-        channels = result.site_api_image;
+        var channels = result.site_api_image;
         $("#site_api_image").val(channels);
     });
 
+    chrome.storage.local.get('site_api_user', function (result) {
+        var channels = result.site_api_user;
+        $("#site_api_user").val(channels);
+    });
+
     chrome.storage.local.get('site_api_key', function (result) {
-        channels = result.site_api_key;
+        var channels = result.site_api_key;
         $("#site_api_key").val(channels);
     });
 
     chrome.storage.local.get('option_filter', function (result) {
-        channels = result.option_filter;
+        var channels = result.option_filter;
         $("#option_filter").val(channels);
     });
 
     chrome.storage.local.get('feature_filter', function (result) {
-        channels = result.feature_filter;
+        var channels = result.feature_filter;
         $("#feature_filter").val(channels);
     });
 
@@ -92,10 +97,12 @@ $(function () {
                    $("#site_name").val(field.name);
                    $("#site_api_info").val(field.site_api_info);
                    $("#site_api_image").val(field.site_api_image);
+                   $("#site_api_user").val(field.site_api_user);
                    $("#site_api_key").val(field.site_api_key);
                    chrome.storage.local.set({'site_name': field.name});
                    chrome.storage.local.set({'site_api_info': field.site_api_info});
                    chrome.storage.local.set({'site_api_image': field.site_api_image});
+                   chrome.storage.local.set({'site_api_user': field.site_api_user});
                    chrome.storage.local.set({'site_api_key': field.site_api_key});
                }
 
@@ -136,6 +143,9 @@ $(function () {
 
         var site_api_image = $("#site_api_image").val();
         chrome.storage.local.set({'site_api_image': site_api_image});
+
+        var site_api_user = $("#site_api_user").val();
+        chrome.storage.local.set({'site_api_user': site_api_user});
 
         var site_api_key = $("#site_api_key").val();
         chrome.storage.local.set({'site_api_key': site_api_key});
