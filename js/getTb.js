@@ -137,45 +137,24 @@ function submitInfo(){
         sizes.push($(this).val());
     });
 
-    console.log(colors);
-    console.log(sizes);
-
     var options = [];
     options['颜色'] = colors;
     options['尺寸'] = sizes;
-
     console.log(options);
 
-
-    var features = [];
+    var feature_names = [];
     var feature_values = [];
     $("input[name='feature']").each(function () {
-        features.push($(this).val());
+        feature_names.push($(this).val());
     });
     $("input[name='feature_value']").each(function () {
         feature_values.push($(this).val());
     });
-
-   // console.log(features);
-   // console.log(feature_values);
-
-    $.each(features, function (i, feature) {
-
-        $.each(feature_values, function (i, feature_value) {
-            console.log(feature);
-            console.log(feature_value);
-            return false;
-        });
-        return;
+    var features = [];
+    $.each(feature_names, function (i, feature_name) {
+        features[feature_name] = feature_values[i];
     });
-
-
-
-
-
-
-
-
+    console.log(features);
 
     $.ajax({
         type:"POST",
