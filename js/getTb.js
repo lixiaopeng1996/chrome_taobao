@@ -76,20 +76,19 @@ $(function() {
 
 function submitInfo(){
 
-    var data = [];
     chrome.storage.local.get('site_api_info', function (result) {
          var url = result.site_api_info;
-         data['url'] = url;
+         Cookies.set('yy_url', url);
     });
 
     chrome.storage.local.get('site_api_user', function (result) {
          var apiUser = result.site_api_user;
-         data['apiUser'] = apiUser;
+         Cookies.set('yy_apiUser', apiUser);
     });
 
     chrome.storage.local.get('site_api_key', function (result) {
          var apiKey = result.site_api_key;
-         data['apiKey'] = apiKey;
+         Cookies.set('yy_apiKey', apiKey);
     });
 
     chrome.storage.local.get('publish', function (result) {
@@ -99,7 +98,6 @@ function submitInfo(){
         } else {
              var status = "disabled";
         }
-        data['status'] = status;
     });
 
     chrome.storage.local.get('shop_id_show', function (result) {
@@ -109,7 +107,6 @@ function submitInfo(){
         } else {
              var shop_id = 0;
         }
-        data['shop_id'] = shop_id;
     });
     var name = $("#product-name").val();
     var slug = $("#product-slug").val();
@@ -155,6 +152,8 @@ function submitInfo(){
         features[feature_name] = feature_values[i];
     });
     console.log(features);
+
+    console.log(Cookies.get('url'));
 
     $.ajax({
         type:"POST",
