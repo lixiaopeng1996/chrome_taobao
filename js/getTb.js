@@ -98,6 +98,7 @@ function submitInfo(){
         } else {
              var status = "disabled";
         }
+        Cookies.set('yy_status', status);
     });
 
     chrome.storage.local.get('shop_id_show', function (result) {
@@ -107,6 +108,7 @@ function submitInfo(){
         } else {
              var shop_id = 0;
         }
+        Cookies.set('yy_shop_id', shop_id);
     });
     var name = $("#product-name").val();
     var slug = $("#product-slug").val();
@@ -115,13 +117,15 @@ function submitInfo(){
     var price = $("#product-price").val();
     var amount = $("#product-store").val();
 
-    // console.log(data);
-    // console.log(name);
-    // console.log(slug);
-    // console.log(source);
-    // console.log(listPrice);
-    // console.log(price);
-    // console.log(amount);
+    console.log(name);
+    console.log(slug);
+    console.log(source);
+    console.log(listPrice);
+    console.log(price);
+    console.log(amount);
+    console.log(Cookies.get('yy_status'));
+    console.log(Cookies.get('yy_shop_id'));
+  
 
 
     var colors = [];
@@ -151,13 +155,28 @@ function submitInfo(){
     $.each(feature_names, function (i, feature_name) {
         features[feature_name] = feature_values[i];
     });
-    console.log(features);
+    // console.log(features);
+    //
+    // console.log(Cookies.get('yy_url'));
+    // console.log(Cookies.get('yy_apiUser'));
+    // console.log(Cookies.get('yy_apiKey'));
 
-    console.log(Cookies.get('url'));
+    var url = Cookies.get('yy_url');
+    var apiUser = Cookies.get('yy_apiUser');
+    var apiKey = Cookies.get('yy_apiKey');
+
+    var data = {
+        ccshop_apiuser : apiUser,
+        ccshop_apikey : apiKey,
+        data : [
+
+        ]
+    };
+
 
     $.ajax({
         type:"POST",
-        url:"testLogin.aspx",
+        url:url,
         data:{Name:"sanmao",Password:"sanmaoword"},
         datatype: "html",
         beforeSend:function(){
