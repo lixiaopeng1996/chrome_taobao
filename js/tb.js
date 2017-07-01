@@ -9,7 +9,8 @@ $(function() {
     var tb_colors = getColors();
     var tb_sizes = getSizes();
     var tb_features = getFeatures();
-    var images = getImage();
+    var tb_images = getImage();
+    var tb_thumbs = getThumbs();
 
 
     // console.log(tb_pname);
@@ -20,6 +21,7 @@ $(function() {
     // console.log(tb_colors);
     // console.log(tb_sizes);
     // console.log(tb_features);
+    //console.log(tb_images);
 
 
     chrome.storage.local.set({'product_name': tb_pname});
@@ -30,6 +32,7 @@ $(function() {
     chrome.storage.local.set({'product_option_colors': tb_colors});
     chrome.storage.local.set({'product_option_sizes': tb_sizes});
     chrome.storage.local.set({'product_features': tb_features});
+    chrome.storage.local.set({'product_images': tb_images});
 
 
 
@@ -82,15 +85,30 @@ $(function() {
         $("img").each(function(){
             var width = this.clientWidth;
             var height = this.clientHeight;
-            if(width > 400 && height > 400 && this.src){
+            if(width > 200 && height > 200 && this.src){
                 images.push(this.src);
             }
         });
 
-        console.log($.unique(images));
+        return $.unique(images);
+    }
 
+    //tb-viewer-original-pic
+
+    function getThumbs() {
+        var thumbs = Array();
+        $(document.body).on('mouseout', '.tb-viewer-thumb', function(event) {
+            var thumbSrc = $(".tb-viewer-original-pic").attr('href');
+            thumbs.push(thumbSrc);
+            console.log($.unique(thumbs));
+        });
 
     }
+
+
+
+
+
 
 });
 

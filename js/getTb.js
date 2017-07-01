@@ -3,6 +3,8 @@ chrome.storage.local.get('product_name', function (result) {
     $("#product-name").val(channels);
 });
 
+
+
 chrome.storage.local.get('product_list_price', function (result) {
     var channels = result.product_list_price;
     $("#product-list-price").val(channels);

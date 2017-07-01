@@ -28,7 +28,12 @@
     {
       "matches": ["https://detail.tmall.com/*"],
       "js": ["js/jquery-1.9.1.min.js", "js/tm.js"]
+    },
+    {
+      "matches": ["https://detail.1688.com/*"],
+      "js": ["js/jquery-1.9.1.min.js", "js/ali.js"]
     }
+
   ],
   "permissions": [
     "tabs", "storage"

@@ -10,3 +10,8 @@
     top:-5px;
     cursor: pointer;
 }
+#image-container{
+    position: relative;
+    top: -1100px;
+    background-color: rgba(0,0,0,0.5);
+}

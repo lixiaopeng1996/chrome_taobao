@@ -1,1 +1,5 @@
-console.log('this is tmall');
+$(function() {
+    console.log('this is tmall');
+
+
+});
