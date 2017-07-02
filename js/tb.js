@@ -93,7 +93,11 @@ $(function() {
                 images.push(this.src);
             }
         });
-        return $.unique(images);
+        var uniqueImages = [];
+        $.each(images, function(i, el){
+            if($.inArray(el, uniqueImages) === -1) uniqueImages.push(el);
+        });
+        return $.unique(uniqueImages);
     }
 
     //tb-viewer-original-pic
@@ -103,16 +107,15 @@ $(function() {
             $(".tb-viewer-original-pic").each(function () {
                 thumbs.push(this.href);
             });
-            chrome.storage.local.set({'product_thumbs': thumbs});
-            return $.unique(thumbs);
+            var uniqueThumbs = [];
+            $.each(thumbs, function(i, el){
+                if($.inArray(el, uniqueThumbs) === -1) uniqueThumbs.push(el);
+            });
+            chrome.storage.local.set({'product_thumbs': $.unique(uniqueThumbs)});
+            //return $.unique(thumbs);
         });
 
     }
-
-
-
-
-
 
 });
 

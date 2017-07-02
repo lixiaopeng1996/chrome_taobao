@@ -12,7 +12,7 @@
 }
 #image-container{
     position: relative;
-    top: -1100px;
+    top: -1190px;
     background-color: rgba(0,0,0,0.5);
 }
 #thumb-list {
@@ -32,4 +32,11 @@
 .col-md-7 img {
     display: block;
     margin: 0 auto;
+}
+#thumb-list .glyphicon-remove {
+    position: relative;
+    cursor: pointer;
+    float: right;
+    top:-70px;
+    font-size: 25px;
 }

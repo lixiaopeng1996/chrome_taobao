@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="js/getTb.js"></script>
     <script type="text/javascript" src="js/js.cookie.js"></script>
+    <script type="text/javascript" src="js/cropper.min.js"></script>
+    <script type="text/javascript" src="js/getTb.js"></script>
+
     <script type="text/javascript" src="js/image.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/cropper.min.css">
     <link rel="stylesheet" href="css/main.css">
     <title>淘宝采集</title>
 </head>
 <body>
 <div class="container">
     <div class="page-header">
-        <h1>信息采集页面</h1>
+        <h1>信息采集页面 <small>共获取主图:<span id="thumbs-num">55</span>张, 其他图片<span id="images-num">555</span>张</small></h1>
         <div style="padding-bottom:21px;">
             <button class="btn btn-default pull-right btn-sm" id="submit-info">提交信息</button>
             <button style="margin-right: 3px;" class="btn btn-default pull-right btn-sm">一键翻译</button>
+            <button class="btn btn-default pull-right btn-sm" id="preview-image">图片预览</button>
         </div>
     </div>
     <div class="row">
@@ -88,7 +91,7 @@
     </div>
 </div>
 
-<div class="container-fluid" id="image-container">
+<div class="container-fluid" id="image-container" >
     <div class="row">
 
     </div>
@@ -96,6 +99,7 @@
         <div class="col-md-7">
             <div class="row" id="thumb-list">
                 <h2>主图列表</h2>
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             </div>
             <div class="row" id="image-list">
                 <h2>其他图片</h2>
@@ -103,6 +107,7 @@
         </div>
 
         <div class="col-md-5" id="image-select">
+
 
         </div>
     </div>
