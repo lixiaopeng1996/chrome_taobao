@@ -13,6 +13,8 @@ $(function() {
     var tb_thumbs = getThumbs();
 
 
+
+
     // console.log(tb_pname);
     // console.log(tb_list_price);
     // console.log(tb_price);
@@ -21,7 +23,8 @@ $(function() {
     // console.log(tb_colors);
     // console.log(tb_sizes);
     // console.log(tb_features);
-    //console.log(tb_images);
+    // console.log(tb_images);
+    // console.log(tb_thumbs);
 
 
     chrome.storage.local.set({'product_name': tb_pname});
@@ -33,6 +36,7 @@ $(function() {
     chrome.storage.local.set({'product_option_sizes': tb_sizes});
     chrome.storage.local.set({'product_features': tb_features});
     chrome.storage.local.set({'product_images': tb_images});
+
 
 
 
@@ -89,18 +93,18 @@ $(function() {
                 images.push(this.src);
             }
         });
-
         return $.unique(images);
     }
 
     //tb-viewer-original-pic
-
     function getThumbs() {
         var thumbs = Array();
         $(document.body).on('mouseout', '.tb-viewer-thumb', function(event) {
-            var thumbSrc = $(".tb-viewer-original-pic").attr('href');
-            thumbs.push(thumbSrc);
-            console.log($.unique(thumbs));
+            $(".tb-viewer-original-pic").each(function () {
+                thumbs.push(this.href);
+            });
+            chrome.storage.local.set({'product_thumbs': thumbs});
+            return $.unique(thumbs);
         });
 
     }

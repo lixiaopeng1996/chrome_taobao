@@ -15,3 +15,21 @@
     top: -1100px;
     background-color: rgba(0,0,0,0.5);
 }
+#thumb-list {
+    background: url("../images/bg.png") repeat-y;
+}
+#image-list {
+    background: url("../images/bg.png") repeat-y;
+}
+.col-md-7 h2 {
+    background: url("../images/h2.jpg");
+    position: relative;
+    margin-top: 0;
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+}
+.col-md-7 img {
+    display: block;
+    margin: 0 auto;
+}
