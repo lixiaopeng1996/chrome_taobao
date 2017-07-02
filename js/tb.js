@@ -89,7 +89,7 @@ $(function() {
         $("img").each(function(){
             var width = this.clientWidth;
             var height = this.clientHeight;
-            if(width > 200 && height > 200 && this.src){
+            if(width > 300 && height > 300 && this.src){
                 images.push(this.src);
             }
         });

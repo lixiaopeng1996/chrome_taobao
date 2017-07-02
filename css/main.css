@@ -11,8 +11,11 @@
     cursor: pointer;
 }
 #image-container{
-    position: relative;
-    top: -1190px;
+    position: absolute;
+    top: 120px;
+    width: 100%;
+    height: auto;
+    z-index: 100;
     background-color: rgba(0,0,0,0.5);
 }
 #thumb-list {
@@ -21,8 +24,30 @@
 #image-list {
     background: url("../images/bg.png") repeat-y;
 }
+.tool-bar{
+    z-index: 100;
+    background: #e05239;
+    font-size: larger;
+    height: 60px;
+    line-height: 60px;
+    position: fixed;
+    cursor: pointer;
+}
+.tool-bar a {
+    color: #ffffff;
+    margin-left: 15px;
+}
+
+#image-select-content {
+    position: relative;
+    top:60px;
+    height: 1700px;
+    background: #60abe0;
+}
+
+
 .col-md-7 h2 {
-    background: url("../images/h2.jpg");
+    background: #60abe0;
     position: relative;
     margin-top: 0;
     text-align: center;
@@ -32,6 +57,7 @@
 .col-md-7 img {
     display: block;
     margin: 0 auto;
+    cursor: pointer;
 }
 #thumb-list .glyphicon-remove {
     position: relative;

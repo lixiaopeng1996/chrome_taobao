@@ -14,9 +14,42 @@
     <title>淘宝采集</title>
 </head>
 <body>
+<div  id="image-container" >
+    <div class="row">
+
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="row" id="thumb-list">
+                <h2>主图列表(<span class="thumbs-num"></span>)</h2>
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </div>
+            <div class="row" id="image-list">
+                <h2>其他图片(<span class="images-num"></span>)</h2>
+            </div>
+        </div>
+
+        <div class="col-md-5" id="image-select">
+            <div class="row col-md-5 tool-bar">
+                <p>
+                    当前图片大小:<u><span class="current-image-width"></span> x <span class="current-image-height"></span></u>
+                    x坐标:<u><span class="select-x"></span></u>
+                    y坐标:<u><span class="select-y"></span></u>
+                    选区长度:<u><span class="select-w"></span></u>
+                    选区高度:<u><span class="select-h"></span></u>
+                    <a id="ok">我裁好了</a>
+                </p>
+            </div>
+
+            <div class="row" id="image-select-content">
+                方法
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="page-header">
-        <h1>信息采集页面 <small>共获取主图:<span id="thumbs-num">55</span>张, 其他图片<span id="images-num">555</span>张</small></h1>
+        <h1>信息采集页面 <small>共获取主图:<span class="thumbs-num"></span>张, 其他图片<span class="images-num"></span>张</small></h1>
         <div style="padding-bottom:21px;">
             <button class="btn btn-default pull-right btn-sm" id="submit-info">提交信息</button>
             <button style="margin-right: 3px;" class="btn btn-default pull-right btn-sm">一键翻译</button>
@@ -91,26 +124,6 @@
     </div>
 </div>
 
-<div class="container-fluid" id="image-container" >
-    <div class="row">
 
-    </div>
-    <div class="row">
-        <div class="col-md-7">
-            <div class="row" id="thumb-list">
-                <h2>主图列表</h2>
-                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-            </div>
-            <div class="row" id="image-list">
-                <h2>其他图片</h2>
-            </div>
-        </div>
-
-        <div class="col-md-5" id="image-select">
-
-
-        </div>
-    </div>
-</div>
 </body>
 </html>
