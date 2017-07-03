@@ -37,14 +37,19 @@
     color: #ffffff;
     margin-left: 15px;
 }
+.tool-bar p {
+    margin-bottom: 0;
+}
 
 #image-select-content {
     position: relative;
-    top:60px;
     height: 1700px;
     background: #60abe0;
 }
-
+#image-select-content img {
+    width: 100%;
+    margin: 8px;
+}
 
 .col-md-7 h2 {
     background: #60abe0;

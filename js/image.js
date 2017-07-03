@@ -31,12 +31,13 @@ $(function () {
         $("#image-container").css("display","none");
     });
 
-    $(document.body).on('click', 'img', function(event) {
+    $(document.body).on('click', '#thumb-list img', function(event) {
         var width = this.clientWidth;
         var height = this.clientHeight;
         $(this).parent().css('width', width);
         $(".current-image-width").html(width);
         $(".current-image-height").html(height);
+        $("#current-image").attr("src", $(this).attr("src"));
         $(this).cropper({
             aspectRatio: 4 / 3,
             zoomable: false,
@@ -46,33 +47,18 @@ $(function () {
             height: 100,
             crop: function(e) {
                 // Output the result data for cropping image.
-
-
-                console.log('-------------');
-                console.log(e.x);
-
-                console.log(e.y);
-
-                console.log(e.width);
-
-                console.log(e.height);
-
-
                 $(".select-x").html(e.x);
                 $(".select-y").html(e.y);
                 $(".select-w").html(e.width);
                 $(".select-h").html(e.height);
-
-
-
             }
         });
-        $image = $(this);
     });
 
     $("#ok").click(function () {
-        //alert(123);
-        console.log($image.cropper("getCanvasData"))
+
+
+
     });
 
 
