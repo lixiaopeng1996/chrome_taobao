@@ -47,7 +47,6 @@ $(function () {
             autoCropArea: 0.8,
             width: 100,
             height: 100,
-
             crop: function(e) {
                 // Output the result data for cropping image.
                 $(".select-x").html(e.detail.x);
@@ -56,10 +55,6 @@ $(function () {
                 $(".select-h").html(e.detail.height);
             }
         });
-
-
-
-
 
 
     });
@@ -94,10 +89,10 @@ $(function () {
 
     $(document.body).on('click', '.remove-crop-image', function(event) {
         var img = $(this).prev().attr('src');
-        alert(img);
+        $(this).parent().remove();
     });
 
-    
+
     $("#image-container").css("display","none");
 });
 
