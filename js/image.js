@@ -83,41 +83,22 @@ $(function () {
         console.log(h);
         console.log(width);
         console.log(height);
-
         var imgurl =  cropper.getCroppedCanvas().toDataURL();
         var img = document.createElement("img");
         img.src = imgurl;
-
-        var html = '<div class="col-md-4"><img crossOrigin="Anonymous" src="'+imgurl+'" class="img-rounded"></div>';
+        var html = '<div class="col-md-4"><img crossOrigin="Anonymous" src="'+imgurl+'" class="img-rounded"><span class="glyphicon glyphicon-remove-circle remove-crop-image"></span></div>';
         $("#image-select-content").append(html);
-       //
-       // document.getElementById("mage-select-content").append(img);
-
-
-
-
-    });
-
-    $("#okc").click(function () {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     });
 
 
-   // $("#image-container").css("display","none");
+    $(document.body).on('click', '.remove-crop-image', function(event) {
+        var img = $(this).prev().attr('src');
+        alert(img);
+    });
+
+    
+    $("#image-container").css("display","none");
 });
 
 

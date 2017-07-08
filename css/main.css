@@ -71,3 +71,6 @@
     top:-70px;
     font-size: 25px;
 }
+.remove-crop-image {
+    position: absolute;
+}
