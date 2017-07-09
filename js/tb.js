@@ -38,8 +38,6 @@ $(function() {
     chrome.storage.local.set({'product_images': tb_images});
 
 
-
-
     function getName() {
         return $(".tb-main-title").data('title');
     }

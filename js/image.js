@@ -83,6 +83,10 @@ $(function () {
         img.src = imgurl;
         var html = '<div class="col-md-4"><img crossOrigin="Anonymous" src="'+imgurl+'" class="img-rounded"><span class="glyphicon glyphicon-remove-circle remove-crop-image"></span></div>';
         $("#image-select-content").append(html);
+        // 组装图片提交信息
+
+
+
 
     });
 
@@ -92,8 +96,33 @@ $(function () {
         $(this).parent().remove();
     });
 
+    $("input[name='image-type']").change(function () {
+        var type = $(this).val();
+        if (type == 'option') {
 
-    $("#image-container").css("display","none");
+
+            alert(type);
+        }
+
+
+    });
+
+
+
+
+
+
+    $("#upload-image").click(function () {
+        var  imageType =  $("input[name='image-type']:checked").val();
+
+        alert(imageType);
+
+
+
+    });
+
+
+    //$("#image-container").css("display","none");
 });
 
 

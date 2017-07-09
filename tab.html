@@ -36,6 +36,22 @@
                     选区高度:<u><span class="select-h"></span></u>
                     <a id="ok">我裁好了</a>
                 </p>
+
+
+                <label class="radio-inline">
+                    <input type="radio" name="image-type" value="thumb" checked> 特色图
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="image-type" value="feature"> 缩略图
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="image-type" value="option" id="option-type"> 选项图
+                </label>
+
+                <span class="cpid">当前产品id: <u id="pid">0</u></span>
+
+                <a id="upload-image">上传</a>
+
                 <img src="" style="display: none" id="current-image">
                 <div class="row" id="image-select-content">
                 </div>

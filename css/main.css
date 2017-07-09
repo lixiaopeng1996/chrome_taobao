@@ -28,8 +28,8 @@
     z-index: 100;
     background: #e05239;
     font-size: larger;
-    height: 60px;
-    line-height: 60px;
+    height: 180px;
+    line-height: 40px;
     position: fixed;
     cursor: pointer;
 }
@@ -73,4 +73,7 @@
 }
 .remove-crop-image {
     position: absolute;
+}
+input[name=image-type] {
+    position: relative !important;
 }
