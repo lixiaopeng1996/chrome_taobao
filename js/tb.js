@@ -45,7 +45,9 @@ $(function() {
     }
 
     function getListPrice() {
-        return $("#J_StrPrice em.tb-rmb-num").text();
+        var sprice = $("#J_StrPrice em.tb-rmb-num").text();
+        var price = sprice.split('-');
+        return price[0];
     }
 
     function getPrice() {

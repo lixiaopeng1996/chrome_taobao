@@ -92,28 +92,23 @@ $(function() {
 
     function getImage() {
         var images = new Array();
-        $(window).scroll(function(event){
-
-            $("img").each(function(){
-                var width = this.clientWidth;
-                var height = this.clientHeight;
-                if(width > 100 && height > 100 && this.src){
-                    images.push(this.src);
-                }
-            });
-            var uniqueImages = [];
-            $.each(images, function(i, el){
-                if($.inArray(el, uniqueImages) === -1) uniqueImages.push(el);
-            });
-            return $.unique(uniqueImages);
 
 
+
+
+        $("img").each(function(){
+            var width = this.clientWidth;
+            var height = this.clientHeight;
+            if(width > 100 && height > 100 && this.src){
+                images.push(this.src);
+                console.log(this.src);
+            }
         });
-
-
-
-
-
+        var uniqueImages = [];
+        $.each(images, function(i, el){
+            if($.inArray(el, uniqueImages) === -1) uniqueImages.push(el);
+        });
+        return $.unique(uniqueImages);
     }
 
     //tb-viewer-original-pic
