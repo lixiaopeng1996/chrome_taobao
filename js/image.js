@@ -31,15 +31,18 @@ $(function () {
         $("#image-container").css("display","none");
     });
 
+    cropperObj = [];
     $(document.body).on('click', '.col-md-7 img', function(event) {
         var width = this.clientWidth;
         var height = this.clientHeight;
+        var src = $(this).attr("src");
         $(this).parent().css('width', width);
         $(".current-image-width").html(width);
         $(".current-image-height").html(height);
-        $("#current-image").attr("src", $(this).attr("src"));
+        $("#current-image").attr("src", src);
         $image = this;
         //new Cropper
+
         cropper = new Cropper($image, {
             aspectRatio: 4 / 3,
             zoomable: false,
@@ -53,9 +56,14 @@ $(function () {
                 $(".select-y").html(e.detail.y);
                 $(".select-w").html(e.detail.width);
                 $(".select-h").html(e.detail.height);
+                $("#current-image").attr("src", e.srcElement.currentSrc);
+
             }
         });
 
+        cropperObj[src] = cropper;
+
+        console.log(cropperObj);
 
     });
 
@@ -78,16 +86,16 @@ $(function () {
         console.log(h);
         console.log(width);
         console.log(height);
-        var imgurl =  cropper.getCroppedCanvas().toDataURL();
+        var imgurl =  cropperObj[src].getCroppedCanvas().toDataURL();
         var img = document.createElement("img");
         img.src = imgurl;
         var html = '<div class="col-md-4"><img crossOrigin="Anonymous" src="'+imgurl+'" class="img-rounded"><span class="glyphicon glyphicon-remove-circle remove-crop-image"></span></div>';
         $("#image-select-content").append(html);
+
+
         // 组装图片提交信息
 
-
-
-
+        
     });
 
 
