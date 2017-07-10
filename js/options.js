@@ -29,31 +29,6 @@ $(function () {
         }
     });
 
-    chrome.storage.local.get('site_name', function (result) {
-        var channels = result.site_name;
-        $("#site_name").val(channels);
-    });
-
-    chrome.storage.local.get('site_api_info', function (result) {
-        var channels = result.site_api_info;
-        $("#site_api_info").val(channels);
-    });
-
-    chrome.storage.local.get('site_api_image', function (result) {
-        var channels = result.site_api_image;
-        $("#site_api_image").val(channels);
-    });
-
-    chrome.storage.local.get('site_api_user', function (result) {
-        var channels = result.site_api_user;
-        $("#site_api_user").val(channels);
-    });
-
-    chrome.storage.local.get('site_api_key', function (result) {
-        var channels = result.site_api_key;
-        $("#site_api_key").val(channels);
-    });
-
     chrome.storage.local.get('option_filter', function (result) {
         var channels = result.option_filter;
         $("#option_filter").val(channels);
@@ -63,6 +38,26 @@ $(function () {
         var channels = result.feature_filter;
         $("#feature_filter").val(channels);
     });
+
+
+    chrome.storage.local.get('site', function (result) {
+        var channels = result.site;
+
+        $("#site_name").val(channels.site_name);
+
+        $("#site_api_info").val(channels.site_api_info);
+
+        $("#site_api_image").val(channels.site_api_image);
+
+        $("#site_api_user").val(channels.site_api_user);
+
+        $("#site_api_key").val(channels.site_api_key);
+    });
+
+
+
+
+
 
     $("#default-options").click(function () {
         var url = './data/config.json';
@@ -94,16 +89,27 @@ $(function () {
                }
 
                if (i == "sites") {
+                   var site = {};
                    $("#site_name").val(field.name);
                    $("#site_api_info").val(field.site_api_info);
                    $("#site_api_image").val(field.site_api_image);
                    $("#site_api_user").val(field.site_api_user);
                    $("#site_api_key").val(field.site_api_key);
-                   chrome.storage.local.set({'site_name': field.name});
-                   chrome.storage.local.set({'site_api_info': field.site_api_info});
-                   chrome.storage.local.set({'site_api_image': field.site_api_image});
-                   chrome.storage.local.set({'site_api_user': field.site_api_user});
-                   chrome.storage.local.set({'site_api_key': field.site_api_key});
+
+                   site.site_name = field.name;
+                   site.site_api_info = field.site_api_info;
+                   site.site_api_image = field.site_api_image;
+                   site.site_api_user = field.site_api_user;
+                   site.site_api_key = field.site_api_key;
+
+                   console.log(site);
+
+
+                   chrome.storage.local.set({'site': site});
+
+
+
+
                }
 
                if (i == "options") {
@@ -135,26 +141,26 @@ $(function () {
         console.log(publish);
         chrome.storage.local.set({'publish': publish});
 
-        var site_name = $("#site_name").val();
-        chrome.storage.local.set({'site_name': site_name});
-
-        var site_api_info = $("#site_api_info").val();
-        chrome.storage.local.set({'site_api_info': site_api_info});
-
-        var site_api_image = $("#site_api_image").val();
-        chrome.storage.local.set({'site_api_image': site_api_image});
-
-        var site_api_user = $("#site_api_user").val();
-        chrome.storage.local.set({'site_api_user': site_api_user});
-
-        var site_api_key = $("#site_api_key").val();
-        chrome.storage.local.set({'site_api_key': site_api_key});
-
         var option_filter = $("#option_filter").val();
         chrome.storage.local.set({'option_filter': option_filter});
 
         var feature_filter = $("#feature_filter").val();
         chrome.storage.local.set({'feature_filter': feature_filter});
+
+
+
+        var site = {};
+        site.site_name = $("#site_name").val();
+        site.site_api_info = $("#site_api_info").val();
+        site.site_api_image = $("#site_api_image").val();
+        site.site_api_user = $("#site_api_user").val();
+        site.site_api_key = $("#site_api_key").val();
+        chrome.storage.local.set({'site': site});
+
+
+
+
+
 
     });
 });

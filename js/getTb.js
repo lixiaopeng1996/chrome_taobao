@@ -78,20 +78,7 @@ $(function() {
 
 function submitInfo(){
 
-    chrome.storage.local.get('site_api_info', function (result) {
-         var url = result.site_api_info;
-         Cookies.set('yy_url', url);
-    });
-
-    chrome.storage.local.get('site_api_user', function (result) {
-         var apiUser = result.site_api_user;
-         Cookies.set('yy_apiUser', apiUser);
-    });
-
-    chrome.storage.local.get('site_api_key', function (result) {
-         var apiKey = result.site_api_key;
-         Cookies.set('yy_apiKey', apiKey);
-    });
+    var content = {};
 
     chrome.storage.local.get('publish', function (result) {
         var publish = result.publish;
@@ -100,35 +87,22 @@ function submitInfo(){
         } else {
              var status = "disabled";
         }
-        Cookies.set('yy_status', status);
+        content.status = status;
     });
 
     chrome.storage.local.get('shop_id_show', function (result) {
         var shop_id_show  = result.shop_id_show;
         if (shop_id_show == "yes") {
              var shop_id = $("#product-shop-id").val();
-        } else {
-             var shop_id = 0;
+            content.shop_id = shop_id;
         }
-        Cookies.set('yy_shop_id', shop_id);
     });
-    var name = $("#product-name").val();
-    var slug = $("#product-slug").val();
-    var source = $("#product-source").val();
-    var listPrice = $("#product-list-price").val();
-    var price = $("#product-price").val();
-    var amount = $("#product-store").val();
-
-    console.log(name);
-    console.log(slug);
-    console.log(source);
-    console.log(listPrice);
-    console.log(price);
-    console.log(amount);
-    console.log(Cookies.get('yy_status'));
-    console.log(Cookies.get('yy_shop_id'));
-  
-
+    content.name = $("#product-name").val();
+    content.slug = $("#product-slug").val();
+    content.source = $("#product-source").val();
+    content.listPrice = $("#product-list-price").val();
+    content.price = $("#product-price").val();
+    content.amount = $("#product-store").val();
 
     var colors = [];
     $("input[name='colors']").each(function () {
@@ -143,7 +117,8 @@ function submitInfo(){
     var options = [];
     options['颜色'] = colors;
     options['尺寸'] = sizes;
-    console.log(options);
+    //console.log(options);
+    content.options = options;
 
     var feature_names = [];
     var feature_values = [];
@@ -158,34 +133,38 @@ function submitInfo(){
         features[feature_name] = feature_values[i];
     });
     // console.log(features);
-    //
-    // console.log(Cookies.get('yy_url'));
-    // console.log(Cookies.get('yy_apiUser'));
-    // console.log(Cookies.get('yy_apiKey'));
+    content.features = features;
 
-    var url = Cookies.get('yy_url');
-    var apiUser = Cookies.get('yy_apiUser');
-    var apiKey = Cookies.get('yy_apiKey');
+    var data = {};
+    var url = {};
+    data.data = content;
+    chrome.storage.local.get('site', function (result) {
+        var channels = result.site;
+        data.ccshop_apiuser = channels.site_api_user;
+        data.ccshop_apikey = channels.site_api_key;
+        url.info = channels.site_api_info;
+        url.image = channels.site_api_image;
 
-    var data = {
-        ccshop_apiuser : apiUser,
-        ccshop_apikey : apiKey,
-        data : [
+    });
+    console.log(url);
 
-        ]
-    };
-
+    console.log(data);
 
     $.ajax({
         type:"POST",
-        url:url,
-        data:{Name:"sanmao",Password:"sanmaoword"},
-        datatype: "html",
+        url:url.info,
+        data:data,
+        datatype: "json",
         beforeSend:function(){
             $("#submit-info").html("loading");
         },
         success:function(data){
             console.log(data);
+
+
+
+
+            
         },
         complete: function(XMLHttpRequest, textStatus){
             $("#submit-info").html("提交信息");

@@ -49,7 +49,14 @@ $(function() {
     }
 
     function getPrice() {
-        return $("#J_PromoPriceNum").text();
+        var price = $("#J_PromoPriceNum").text();
+        var sprice = $("#J_StrPrice em.tb-rmb-num").text();
+        var list_price = sprice.split('-');
+        if (price) {
+            return price;
+        } else {
+            return list_price[0];
+        }
     }
 
     function getSource() {
