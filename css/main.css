@@ -77,3 +77,10 @@
 input[name=image-type] {
     position: relative !important;
 }
+input[name=option-type] {
+    position: relative !important;
+}
+.option-list {
+    display: none;
+    color: #FFFFFF;
+}

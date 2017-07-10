@@ -44,7 +44,7 @@
                 <label class="radio-inline">
                     <input type="radio" name="image-type" value="feature"> 缩略图
                 </label>
-                <label class="radio-inline">
+                <label class="radio-inline" title="选项图默认上传第一张图片">
                     <input type="radio" name="image-type" value="option" id="option-type"> 选项图
                 </label>
 
@@ -53,6 +53,15 @@
                 <a id="upload-image">上传</a>
 
                 <img src="" style="display: none" id="current-image">
+                <div class="option-list">
+
+                    <label class="radio-inline">
+                        <input type="radio" name="option-type" value="thumb" checked> 红色
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="option-type" value="feature"> 绿色
+                    </label>
+                </div>
                 <div class="row" id="image-select-content">
                 </div>
             </div>
