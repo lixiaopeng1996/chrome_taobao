@@ -92,14 +92,17 @@ $(function() {
 
     function getImage() {
         var images = new Array();
-
-
-
+        var imageSize = {};
+        chrome.storage.local.get('imageSize', function (result) {
+            var channels = result.imageSize;
+            imageSize.width = channels.width;
+            imageSize.height = channels.height;
+        });
 
         $("img").each(function(){
             var width = this.clientWidth;
             var height = this.clientHeight;
-            if(width > 100 && height > 100 && this.src){
+            if(width > imageSize.width && height > imageSize.height && this.src){
                 images.push(this.src);
                 console.log(this.src);
             }

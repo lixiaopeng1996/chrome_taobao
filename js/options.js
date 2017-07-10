@@ -1,15 +1,22 @@
 $(function () {
     // 页面加载
 
-    chrome.storage.local.get('image_width', function (result) {
-        var channels = result.image_width;
-        $("#image_width").val(channels);
+
+
+
+
+    chrome.storage.local.get('imageSize', function (result) {
+        var channels = result.imageSize;
+        $("#image_width").val(channels.width);
+        $("#image_height").val(channels.height);
     });
 
-    chrome.storage.local.get('imahe_height', function (result) {
-        var channels = result.imahe_height;
-        $("#image_height").val(channels);
-    });
+
+
+
+
+
+
 
     chrome.storage.local.get('shop_id_show', function (result) {
         var channels = result.shop_id_show;
@@ -54,20 +61,17 @@ $(function () {
         $("#site_api_key").val(channels.site_api_key);
     });
 
-
-
-
-
-
     $("#default-options").click(function () {
         var url = './data/config.json';
         $.getJSON(url,function(result){
             $.each(result, function(i, field){
                if (i == "images") {
+                   var imageSize = {};
                    $("#image_height").val(field.height);
                    $("#image_width").val(field.width);
-                   chrome.storage.local.set({'image_width': field.width});
-                   chrome.storage.local.set({'imahe_height': field.height});
+                   imageSize.width = field.height;
+                   imageSize.height = field.width;
+                   chrome.storage.local.set({'imageSize': imageSize});
                }
 
                if (i == "shop_id_show") {
@@ -101,14 +105,7 @@ $(function () {
                    site.site_api_image = field.site_api_image;
                    site.site_api_user = field.site_api_user;
                    site.site_api_key = field.site_api_key;
-
-                   console.log(site);
-
-
                    chrome.storage.local.set({'site': site});
-
-
-
 
                }
 
@@ -128,11 +125,10 @@ $(function () {
     });
 
     $("#custom-options").click(function () {
-        var image_width = $("#image_width").val();
-        chrome.storage.local.set({'image_width': image_width});
-
-        var image_height = $("#image_height").val();
-        chrome.storage.local.set({'imahe_height': image_height});
+        var imageSize = {};
+        imageSize.width = $("#image_width").val();
+        imageSize.height = $("#image_height").val();
+        chrome.storage.local.set({'imageSize': imageSize});
 
         var shop_id_show = $("input[name='shop_id_show']:checked").val();
         chrome.storage.local.set({'shop_id_show': shop_id_show});
@@ -147,8 +143,6 @@ $(function () {
         var feature_filter = $("#feature_filter").val();
         chrome.storage.local.set({'feature_filter': feature_filter});
 
-
-
         var site = {};
         site.site_name = $("#site_name").val();
         site.site_api_info = $("#site_api_info").val();
@@ -156,12 +150,6 @@ $(function () {
         site.site_api_user = $("#site_api_user").val();
         site.site_api_key = $("#site_api_key").val();
         chrome.storage.local.set({'site': site});
-
-
-
-
-
-
     });
 });
 

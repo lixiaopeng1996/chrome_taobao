@@ -161,10 +161,6 @@ function submitInfo(){
         success:function(data){
             console.log(data);
 
-
-
-
-            
         },
         complete: function(XMLHttpRequest, textStatus){
             $("#submit-info").html("提交信息");

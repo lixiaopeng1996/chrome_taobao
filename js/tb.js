@@ -92,6 +92,9 @@ $(function() {
     }
 
     function getImage() {
+
+
+
         var images = new Array();
         $("img").each(function(){
             var width = this.clientWidth;
