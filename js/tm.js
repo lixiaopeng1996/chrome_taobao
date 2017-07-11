@@ -68,24 +68,35 @@ $(function() {
 
     function getColors() {
         var colors = new Array();
-        $(".J_TSaleProp.tb-img > li > a > span").each(function(){
-            colors.push($(this).text());
+        $(".tm-img-prop  ul > li ").each(function(){
+            colors.push($(this).attr('title'));
         });
         return colors;
     }
 
     function getSizes() {
         var sizes =  new Array();
-        $(".J_TMySizeProp.J_Prop_measurement ul > li>a>span").each(function(){
+//
+        //var ul = $(".tb-prop.tm-sale-prop ul").first();
+
+
+
+        $(".tb-prop.tm-sale-prop ul:first >li>a>span").each(function(){
             sizes.push($(this).text());
+
         });
         return sizes;
     }
 
     function getFeatures() {
         var features = new Array();
-        $(".attributes-list li").each(function () {
+        $("#J_AttrUL li").each(function () {
             features.push($(this).text());
+
+            console.log($(this).text());
+
+
+
         });
         return features;
     }
