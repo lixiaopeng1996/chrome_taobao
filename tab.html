@@ -36,39 +36,25 @@
                     选区高度:<u><span class="select-h"></span></u>
                     <a id="ok">我裁好了</a>
                 </p>
-
-
                 <label class="radio-inline">
-                    <input type="radio" name="image-type" value="thumb" checked> 特色图
+                    <input type="radio" name="image-type" value="thumb" checked> 缩略图
                 </label>
                 <label class="radio-inline">
-                    <input type="radio" name="image-type" value="feature"> 缩略图
+                    <input type="radio" name="image-type" value="feature"> 特色图
                 </label>
                 <label class="radio-inline" title="选项图默认上传第一张图片">
                     <input type="radio" name="image-type" value="option" id="option-type"> 选项图
                 </label>
-
                 <span class="cpid">当前产品id: <u id="return_product_id">0</u></span>
-
                 <a id="upload-image">上传</a>
-
                 <img src="" style="display: none" id="current-image">
                 <span style="display: none" id="current-api-user"></span>
                 <span style="display: none" id="current-api-info"></span>
                 <span style="display: none" id="current-api-image"></span>
                 <span style="display: none" id="current-api-key"></span>
                 <span style="display: none" id="current-publish"></span>
-
-                <div class="option-list">
-                    <label class="radio-inline">
-                        <input type="radio" name="option-type" value="thumb" checked> 红色
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="option-type" value="feature"> 绿色
-                    </label>
-                </div>
-                <div class="row" id="image-select-content">
-                </div>
+                <div class="option-list"></div>
+                <div class="row" id="image-select-content"></div>
             </div>
         </div>
     </div>

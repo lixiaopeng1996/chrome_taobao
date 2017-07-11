@@ -30,6 +30,12 @@ chrome.storage.local.get('product_option_colors', function (result) {
         var html = '<div class="form-group"><input name="colors" type="text" value="'+item+'" class="form-control"><span class="glyphicon glyphicon-remove-circle remove-option"></span></div>';
         colorsBody.append(html);
     });
+    // 填充到选项图片上传区域
+    var opBody = $(".option-list");
+    $.each(channels, function (key,item) {
+        var opHtml = '<label class="radio-inline"><input type="radio" name="option-type" value="'+item+'">'+item+'</label>';
+        opBody.append(opHtml);
+    });
 });
 
 chrome.storage.local.get('product_option_sizes', function (result) {
@@ -39,6 +45,7 @@ chrome.storage.local.get('product_option_sizes', function (result) {
         var html = '<div class="form-group"><input name="sizes" type="text" value="'+item+'" class="form-control"><span class="glyphicon glyphicon-remove-circle remove-option"></span></div>';
         sizesBody.append(html);
     });
+
 });
 
 chrome.storage.local.get('product_features', function (result) {

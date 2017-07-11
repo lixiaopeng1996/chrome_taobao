@@ -111,18 +111,9 @@ $(function () {
         var type = $(this).val();
         if (type == 'option') {
             $(".option-list").css("display", "block");
-
-
-
-
-
-
-            // optionImages[] = api_image+'?key=fa94h9a2y5bv43n2zg3s&url='+src+'&dw=600&dh=800&x='+x+'&y='+y+'&w='+w+'&h='+h+'&id=840&typeid=1&optionValue=红色';
         } else {
             $(".option-list").css("display", "none");
         }
-
-
     });
 
 
@@ -132,48 +123,63 @@ $(function () {
             var thumbImages = $(".thumbImages");
             $(".thumbImages").each(function () {
                 var src = $(this).data('src');
-
-                console.log(src);
-
-
-
-
-
+                uploadImage(src);
             });
-
-
         } else if (imageType == 'feature') {
             var featureImages = $(".featureImages");
             $(".featureImages").each(function () {
                 var src = $(this).data('src');
-
-                console.log(src);
-
-
-
+                uploadImage(src);
             });
 
         } else {
+            //http://ccshop.dev/rhsatmeljmog?key=fa94h9a2y5bv43n2zg3s&url=https://ss1.bdstun.png?v=md5&dw=600&dh=800&x=20&y=50&w=450&h=600&id=840&typeid=1&optionValue=红色
+
+            var checkedOption = $("input[name='option-type']:checked").val();
+            if (checkedOption) {
+                var src = $("#current-image").attr('src');
+                var src = $("#current-image").attr("src");
+
+                var x = $(".select-x").text();
+                var y = $(".select-y").text();
+                var w = $(".select-w").text();
+                var h = $(".select-h").text();
+                if (src) {
+                    var url = api_image+'?key=fa94h9a2y5bv43n2zg3s&url='+src+'&dw=600&dh=800&x='+x+'&y='+y+'&w='+w+'&h='+h+'&id='+return_product_id+'&typeid=1&optionValue='+checkedOption;
+                    uploadImage(url);
+                } else {
+                    alert('当前没有裁剪好的图片');
+                }
 
 
 
 
-            alert('123');
+
+            } else {
+                alert("请选择一个现有选项");
+            }
         }
-
-
-
-
-
-
     });
 
+    function uploadImage(src) {
+        $.ajax({
+            type:"GET",
+            url: src,
+            beforeSend:function(){
 
-    function uploadImage() {
+            },
+            success:function(data){
+                console.log(data);
+            },
+            complete: function(XMLHttpRequest, textStatus){
+
+            },
+            error: function(){
+                alert('图片上传失败, 请联系开发者');
+            }
+        });
 
 
-
-        
     }
 
 
@@ -182,7 +188,7 @@ $(function () {
 
 
 
-    $("#image-container").css("display","none");
+   // $("#image-container").css("display","none");
 });
 
 
