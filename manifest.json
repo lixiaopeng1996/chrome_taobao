@@ -29,6 +29,7 @@
     {
       "matches": ["https://detail.tmall.com/*"],
       "js": ["js/jquery-1.9.1.min.js", "js/tm.js"],
+      "css": ["css/tm.css"],
       "run_at": "document_end"
     },
     {

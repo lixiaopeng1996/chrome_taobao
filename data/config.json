@@ -2,7 +2,7 @@
   "name": "默认的配置文件for hassyon",
   "version": "0.0.1",
   "images" : {
-    "width" : 500,
+    "width" : 400,
     "height" : 400
   },
   "shop_id_show" : "no",

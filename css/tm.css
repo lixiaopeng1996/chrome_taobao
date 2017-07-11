@@ -1,0 +1,10 @@
+#fetch-image{
+    position: fixed;
+    top: 80px;
+    right: 100px;
+    background: #e05a1a;
+    width: 100px;
+    height: 70px;
+    z-index: 9999;
+    cursor: pointer;
+}

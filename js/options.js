@@ -5,6 +5,16 @@ $(function () {
         $("#image_width").val(channels.width);
         $("#image_height").val(channels.height);
     });
+
+    chrome.storage.local.get('shop_id_show', function (result) {
+        var channels = result.shop_id_show;
+        if (channels == "yes") {
+            $("#shop_id_yes").attr("checked", "true");
+        } else {
+            $("#shop_id_no").attr("checked", "true");
+        }
+    });
+
     chrome.storage.local.get('publish', function (result) {
         var channels = result.publish;
         if (channels == "yes") {
@@ -52,9 +62,14 @@ $(function () {
                    chrome.storage.local.set({'imageSize': imageSize});
                }
 
-               if (i == "shop_id_show") {
-
-               }
+                if (i == "shop_id_show") {
+                   if (field == "yes"){
+                     $("#shop_id_yes").attr("checked", "true");
+                   } else {
+                         $("#shop_id_no").attr("checked", "true");
+                   }
+                   chrome.storage.local.set({'shop_id_show': field});
+                }
 
                if (i == "publish") {
                    if (field == "yes") {
@@ -102,6 +117,9 @@ $(function () {
         imageSize.width = $("#image_width").val();
         imageSize.height = $("#image_height").val();
         chrome.storage.local.set({'imageSize': imageSize});
+
+        var shop_id_show = $("input[name='shop_id_show']:checked").val();
+        chrome.storage.local.set({'shop_id_show': shop_id_show});
 
         var publish = $("input[name='publish']:checked").val();
         console.log(publish);

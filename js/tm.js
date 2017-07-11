@@ -1,6 +1,10 @@
 $(function() {
     console.log('this is tmall');
-    $("html, body").animate({ scrollTop: 1000 }, 2000);
+    createButton();
+
+
+
+    //$("html, body").animate({ scrollTop: 1000 }, 2000);
 
     var tb_pname = getName();
     var tb_list_price = getListPrice();
@@ -13,19 +17,16 @@ $(function() {
     var tb_images = getImage();
     var tb_thumbs = getThumbs();
 
-
-
-
-     console.log(tb_pname);
-     console.log(tb_list_price);
-     console.log(tb_price);
-     console.log(tb_source);
-     console.log(tb_store);
+     // console.log(tb_pname);
+     // console.log(tb_list_price);
+     // console.log(tb_price);
+     // console.log(tb_source);
+     // console.log(tb_store);
     // console.log(tb_colors);
     // console.log(tb_sizes);
     // console.log(tb_features);
     // console.log(tb_images);
-    console.log(tb_thumbs);
+    //console.log(tb_thumbs);
 
 
     chrome.storage.local.set({'product_name': tb_pname});
@@ -57,7 +58,7 @@ $(function() {
 
     function getStore() {
         var store =  $("#J_EmStock").text();
-        console.log(store);
+       // console.log(store);
         var num = store.match(/\d+/g);
         if (num) {
             return num[0];
@@ -76,11 +77,6 @@ $(function() {
 
     function getSizes() {
         var sizes =  new Array();
-//
-        //var ul = $(".tb-prop.tm-sale-prop ul").first();
-
-
-
         $(".tb-prop.tm-sale-prop ul:first >li>a>span").each(function(){
             sizes.push($(this).text());
 
@@ -92,28 +88,34 @@ $(function() {
         var features = new Array();
         $("#J_AttrUL li").each(function () {
             features.push($(this).text());
-
-            console.log($(this).text());
-
-
-
         });
         return features;
     }
 
     function getImage() {
         var images = new Array();
-        var imageSize = {};
-        chrome.storage.local.get('imageSize', function (result) {
-            var channels = result.imageSize;
-            imageSize.width = channels.width;
-            imageSize.height = channels.height;
-        });
+        // var imageSize = {};
+        // chrome.storage.local.get('imageSize', function (result) {
+        //     var channels = result.imageSize;
+        //     imageSize.width = channels.width;
+        //     imageSize.height = channels.height;
+        // });
+        //
+        // console.log();
+
+        var img = new Image();
+
+        //img.setAttribute('crossOrigin', 'anonymous');
+
+        var urls = document.querySelectorAll('img');
+
+        console.log(urls);
+
 
         $("img").each(function(){
             var width = this.clientWidth;
             var height = this.clientHeight;
-            if(width > imageSize.width && height > imageSize.height && this.src){
+            if(width > 300 && height > 300 && this.src){
                 images.push(this.src);
                 console.log(this.src);
             }
@@ -137,6 +139,19 @@ $(function() {
             chrome.storage.local.set({'product_thumbs': $.unique(uniqueThumbs)});
         });
     }
+
+
+    function createButton() {
+        var button = '<button id="fetch-image">获取详情图</button>';
+        $("body").append(button);
+    }
+
+    $(document.body).on('click', '#fetch-image', function(event) {
+        alert(123);
+    });
+
+
+
 
 });
 
