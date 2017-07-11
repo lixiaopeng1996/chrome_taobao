@@ -31,23 +31,19 @@ $(function () {
         $("#image-container").css("display","none");
     });
 
-
-    chrome.storage.local.get('site', function (result) {
-        var channels = result.site;
-        if (Cookies.get('api_image')) {
-            Cookies.remove('api_image');
-        }
-        Cookies.set('api_image', channels.site_api_image);
-    });
-
-    api_image = Cookies.get('api_image');
-
     cropperObj = [];
     optionImages = [];
     thumbImages = [];
     featureImages = [];
 
+
+    var api_image = '';
+    var return_product_id = '';
+
+
     $(document.body).on('click', '.col-md-7 img', function(event) {
+        api_image = $("#current-api-image").text();
+        return_product_id = $("#return_product_id").text();
         var width = this.clientWidth;
         var height = this.clientHeight;
         var src = $(this).attr("src");
@@ -83,7 +79,6 @@ $(function () {
         var y = $(".select-y").text();
         var w = $(".select-w").text();
         var h = $(".select-h").text();
-
         var height = $(".current-image-width").text();
         var width = $(".current-image-height").text();
 
@@ -94,25 +89,15 @@ $(function () {
         // console.log(h);
         // console.log(width);
         // console.log(height);
+
         var imgurl =  cropperObj[src].getCroppedCanvas().toDataURL();
         var img = document.createElement("img");
         img.src = imgurl;
-
-        var thumbImagesSrc = api_image+'?key=fa94h9a2y5bv43n2zg3s&url='+src+'&dw=600&dh=800&x='+x+'&y='+y+'&w='+w+'&h='+h+'&id=840&typeid=1';
-        var featureImagesSrc = api_image+'?key=fa94h9a2y5bv43n2zg3s&url='+src+'&dw=600&dh=800&x='+x+'&y='+y+'&w='+w+'&h='+h+'&id=840&typeid=2';
-
+        var thumbImagesSrc = api_image+'?key=fa94h9a2y5bv43n2zg3s&url='+src+'&dw=600&dh=800&x='+x+'&y='+y+'&w='+w+'&h='+h+'&id='+return_product_id+'&typeid=1';
+        var featureImagesSrc = api_image+'?key=fa94h9a2y5bv43n2zg3s&url='+src+'&dw=600&dh=800&x='+x+'&y='+y+'&w='+w+'&h='+h+'&id='+return_product_id+'&typeid=2';
         var noneSrc = '<img style="display: none;" class="thumbImages" data-src="'+thumbImagesSrc+'"><img style="display: none;" class="featureImages" data-src="'+featureImagesSrc+'">';
-
         var html = '<div class="col-md-4">'+noneSrc+'<img crossOrigin="Anonymous" src="'+imgurl+'" class="img-rounded"><span class="glyphicon glyphicon-remove-circle remove-crop-image"></span></div>';
         $("#image-select-content").append(html);
-
-
-
-        // 组装图片提交信息
-
-
-
-
 
     });
 
@@ -149,6 +134,11 @@ $(function () {
                 var src = $(this).data('src');
 
                 console.log(src);
+
+
+
+
+
             });
 
 
@@ -158,6 +148,9 @@ $(function () {
                 var src = $(this).data('src');
 
                 console.log(src);
+
+
+
             });
 
         } else {
@@ -174,6 +167,19 @@ $(function () {
 
 
     });
+
+
+    function uploadImage() {
+
+
+
+        
+    }
+
+
+
+
+
 
 
     $("#image-container").css("display","none");

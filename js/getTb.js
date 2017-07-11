@@ -60,6 +60,11 @@ chrome.storage.local.get('site', function (result) {
     $("#current-api-key").text(channels.site_api_key);
 });
 
+chrome.storage.local.get('return_product_id', function (result) {
+    var channels = result.return_product_id;
+    $("#return_product_id").text(channels);
+});
+
 $(function() {
     $(document.body).on('click', '.remove-option', function() {
         $(this).parent().remove();
@@ -85,7 +90,6 @@ $(function() {
         }
     });
 
-
     $("#submit-info").click(function () {
          submitInfo();
     });
@@ -100,6 +104,11 @@ function submitInfo(){
     content.price = $("#product-price").val();
     content.amount = $("#product-store").val();
     content.status = $("#current-publish").text();
+
+    if (!content.slug) {
+        alert('请先完成翻译');
+        return false;
+    }
 
     var colors = [];
     $("input[name='colors']").each(function () {
@@ -138,13 +147,7 @@ function submitInfo(){
     data.ccshop_apikey = $("#current-api-key").text();
     var infoUrl = $("#current-api-info").text();
     var imageUrl = $("#current-api-image").text();
-
     console.log(data);
-
-
-
-
-
 
     $.ajax({
         type:"POST",
@@ -156,14 +159,16 @@ function submitInfo(){
             $("#submit-info").html("loading");
         },
         success:function(data){
-            console.log(data);
-
+            chrome.storage.local.set({'return_product_id': data.data.id});
+            $("#return_product_id").text(data.data.id);
+            alert('产品创建成功, 可以开始上传图片了');
         },
         complete: function(XMLHttpRequest, textStatus){
             $("#submit-info").html("提交信息");
         },
         error: function(){
             console.log('error');
+            alert('产品创建失败, 请联系开发者...');
         }
     });
 }

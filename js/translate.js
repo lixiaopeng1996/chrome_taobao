@@ -17,7 +17,7 @@ $(function () {
             type:"GET",
             url: url,
             beforeSend:function(){
-
+                $("#one-translate").html('正在翻译');
             },
             success:function(data){
                 if (data) {
@@ -34,6 +34,7 @@ $(function () {
                          result = 'error';
                     }
                 }
+                $("#one-translate").html('翻译完成');
             },
             complete: function(XMLHttpRequest, textStatus){
 
