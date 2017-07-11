@@ -3,8 +3,6 @@ chrome.storage.local.get('product_name', function (result) {
     $("#product-name").val(channels);
 });
 
-
-
 chrome.storage.local.get('product_list_price', function (result) {
     var channels = result.product_list_price;
     $("#product-list-price").val(channels);
@@ -54,6 +52,14 @@ chrome.storage.local.get('product_features', function (result) {
     });
 });
 
+chrome.storage.local.get('site', function (result) {
+    channels = result.site;
+    $("#current-api-user").text(channels.site_api_user);
+    $("#current-api-info").text(channels.site_api_info);
+    $("#current-api-image").text(channels.site_api_image);
+    $("#current-api-key").text(channels.site_api_key);
+});
+
 $(function() {
     $(document.body).on('click', '.remove-option', function() {
         $(this).parent().remove();
@@ -67,6 +73,15 @@ $(function() {
         var channels = result.shop_id_show;
         if (channels == "no") {
             $("#product-shop-id").parent().remove();
+        }
+    });
+    // 默认产品状态
+    chrome.storage.local.get('publish', function (result) {
+        var channels = result.publish;
+        if (channels == "no") {
+            $("#current-publish").text("unpublished");
+        } else {
+            $("#current-publish").text("instock");
         }
     });
 
@@ -100,9 +115,10 @@ function submitInfo(){
     content.name = $("#product-name").val();
     content.slug = $("#product-slug").val();
     content.source = $("#product-source").val();
-    content.listPrice = $("#product-list-price").val();
+    content.list_price = $("#product-list-price").val();
     content.price = $("#product-price").val();
     content.amount = $("#product-store").val();
+    content.status = $("#current-publish").text();
 
     var colors = [];
     $("input[name='colors']").each(function () {
@@ -134,27 +150,27 @@ function submitInfo(){
     });
     // console.log(features);
     content.features = features;
-
     var data = {};
-    var url = {};
     data.data = content;
-    chrome.storage.local.get('site', function (result) {
-        var channels = result.site;
-        data.ccshop_apiuser = channels.site_api_user;
-        data.ccshop_apikey = channels.site_api_key;
-        url.info = channels.site_api_info;
-        url.image = channels.site_api_image;
 
-    });
-    console.log(url);
+    data.ccshop_apiuser = $("#current-api-user").text();
+    data.ccshop_apikey = $("#current-api-key").text();
+    var infoUrl = $("#current-api-info").text();
+    var imageUrl = $("#current-api-image").text();
 
     console.log(data);
 
+
+
+
+
+
     $.ajax({
         type:"POST",
-        url:url.info,
+        url:infoUrl,
         data:data,
         datatype: "json",
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",
         beforeSend:function(){
             $("#submit-info").html("loading");
         },

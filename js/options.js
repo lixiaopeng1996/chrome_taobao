@@ -1,22 +1,10 @@
 $(function () {
     // 页面加载
-
-
-
-
-
     chrome.storage.local.get('imageSize', function (result) {
         var channels = result.imageSize;
         $("#image_width").val(channels.width);
         $("#image_height").val(channels.height);
     });
-
-
-
-
-
-
-
 
     chrome.storage.local.get('shop_id_show', function (result) {
         var channels = result.shop_id_show;

@@ -28,7 +28,7 @@ $(function () {
                              $("#product-name").val(result);
                          }
                          if (key == 'slug') {
-                             $("#product-slug").val(result);
+                             $("#product-slug").val(result.replace(/[\W]+/g, '-'));
                          }
                     } else {
                          result = 'error';

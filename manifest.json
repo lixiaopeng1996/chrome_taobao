@@ -23,19 +23,22 @@
   "content_scripts": [
     {
       "matches": ["https://item.taobao.com/*"],
-      "js": ["js/jquery-1.9.1.min.js", "js/tb.js"]
+      "js": ["js/jquery-1.9.1.min.js", "js/tb.js"],
+      "run_at": "document_end"
     },
     {
       "matches": ["https://detail.tmall.com/*"],
-      "js": ["js/jquery-1.9.1.min.js", "js/tm.js"]
+      "js": ["js/jquery-1.9.1.min.js", "js/tm.js"],
+      "run_at": "document_end"
     },
     {
       "matches": ["https://detail.1688.com/*"],
-      "js": ["js/jquery-1.9.1.min.js", "js/ali.js"]
+      "js": ["js/jquery-1.9.1.min.js", "js/ali.js"],
+      "run_at": "document_end"
     }
 
   ],
   "permissions": [
-    "tabs", "storage"
+    "tabs", "storage", "<all_urls>"
   ]
 }
