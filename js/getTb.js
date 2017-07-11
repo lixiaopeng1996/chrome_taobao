@@ -92,29 +92,10 @@ $(function() {
 });
 
 function submitInfo(){
-
     var content = {};
-
-    chrome.storage.local.get('publish', function (result) {
-        var publish = result.publish;
-        if (publish == "yes") {
-             var status = "instock";
-        } else {
-             var status = "disabled";
-        }
-        content.status = status;
-    });
-
-    chrome.storage.local.get('shop_id_show', function (result) {
-        var shop_id_show  = result.shop_id_show;
-        if (shop_id_show == "yes") {
-             var shop_id = $("#product-shop-id").val();
-            content.shop_id = shop_id;
-        }
-    });
     content.name = $("#product-name").val();
     content.slug = $("#product-slug").val();
-    content.source = $("#product-source").val();
+    content.product_source = $("#product-source").val();
     content.list_price = $("#product-list-price").val();
     content.price = $("#product-price").val();
     content.amount = $("#product-store").val();
@@ -130,9 +111,9 @@ function submitInfo(){
         sizes.push($(this).val());
     });
 
-    var options = [];
-    options['颜色'] = colors;
-    options['尺寸'] = sizes;
+    var options = {};
+    options.颜色 = colors;
+    options.尺寸 = sizes;
     //console.log(options);
     content.options = options;
 
@@ -144,7 +125,7 @@ function submitInfo(){
     $("input[name='feature_value']").each(function () {
         feature_values.push($(this).val());
     });
-    var features = [];
+    var features = {};
     $.each(feature_names, function (i, feature_name) {
         features[feature_name] = feature_values[i];
     });
