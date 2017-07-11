@@ -1,11 +1,7 @@
 $(function() {
     console.log('this is tmall');
-    createButton();
-
-
-
-    //$("html, body").animate({ scrollTop: 1000 }, 2000);
-
+    //createButton();
+    $("html, body").animate({ scrollTop: 1000 }, 2000);
     var tb_pname = getName();
     var tb_list_price = getListPrice();
     var tb_price = getPrice();
@@ -22,12 +18,11 @@ $(function() {
      // console.log(tb_price);
      // console.log(tb_source);
      // console.log(tb_store);
-    // console.log(tb_colors);
-    // console.log(tb_sizes);
-    // console.log(tb_features);
-    // console.log(tb_images);
-    //console.log(tb_thumbs);
-
+     // console.log(tb_colors);
+     // console.log(tb_sizes);
+     // console.log(tb_features);
+     // console.log(tb_images);
+     //console.log(tb_thumbs);
 
     chrome.storage.local.set({'product_name': tb_pname});
     chrome.storage.local.set({'product_list_price': tb_list_price});
@@ -37,7 +32,6 @@ $(function() {
     chrome.storage.local.set({'product_option_colors': tb_colors});
     chrome.storage.local.set({'product_option_sizes': tb_sizes});
     chrome.storage.local.set({'product_features': tb_features});
-    chrome.storage.local.set({'product_images': tb_images});
 
 
     function getName() {
@@ -93,38 +87,37 @@ $(function() {
     }
 
     function getImage() {
-        var images = new Array();
-        // var imageSize = {};
-        // chrome.storage.local.get('imageSize', function (result) {
-        //     var channels = result.imageSize;
-        //     imageSize.width = channels.width;
-        //     imageSize.height = channels.height;
+        //var images = new Array();
+        // $(document.body).on('mouseover', 'img', function(event) {
+        //     var width = this.clientWidth;
+        //     var height = this.clientHeight;
+        //     if(width > 300 && height > 300 && this.src){
+        //         images.push(this.src);
+        //       //  console.log(this.src);
+        //     }
+        //     var uniqueImages = [];
+        //     $.each(images, function(i, el){
+        //         if($.inArray(el, uniqueImages) === -1) uniqueImages.push(el);
+        //     });
+        //     chrome.storage.local.set({'product_images': $.unique(uniqueImages)});
         // });
+
+        // $(document).on('mouseover', 'body', function(event) {
+        //     $(this).find('img').each(function (index, item) {
+        //         var width = item.clientWidth;
+        //         var height = item.clientHeight;
+        //         if(width > 300 && height > 300 && this.src){
+        //             images.push(this.src);
+        //         }
+        //         var uniqueImages = [];
+        //         $.each(images, function(i, el){
+        //             if($.inArray(el, uniqueImages) === -1) uniqueImages.push(el);
+        //         });
+        //         chrome.storage.local.set({'product_images': $.unique(uniqueImages)});
         //
-        // console.log();
-
-        var img = new Image();
-
-        //img.setAttribute('crossOrigin', 'anonymous');
-
-        var urls = document.querySelectorAll('img');
-
-        console.log(urls);
-
-
-        $("img").each(function(){
-            var width = this.clientWidth;
-            var height = this.clientHeight;
-            if(width > 300 && height > 300 && this.src){
-                images.push(this.src);
-                console.log(this.src);
-            }
-        });
-        var uniqueImages = [];
-        $.each(images, function(i, el){
-            if($.inArray(el, uniqueImages) === -1) uniqueImages.push(el);
-        });
-        return $.unique(uniqueImages);
+        //     });
+        // });
+       // return $.unique(uniqueImages);
     }
 
     //tb-viewer-original-pic
@@ -140,18 +133,31 @@ $(function() {
         });
     }
 
-
     function createButton() {
         var button = '<button id="fetch-image">获取详情图</button>';
         $("body").append(button);
     }
 
-    $(document.body).on('click', '#fetch-image', function(event) {
+    $(document.body).on('click', '#page', function(event) {
         alert(123);
+        var images = new Array();
+        $(this).find('img').each(function (index, item) {
+            var width = item.clientWidth;
+            var height = item.clientHeight;
+            if(width > 300 && height > 300 && this.src){
+
+                console.log(this.src);
+                images.push(this.src);
+            }
+            var uniqueImages = [];
+            $.each(images, function(i, el){
+                if($.inArray(el, uniqueImages) === -1) uniqueImages.push(el);
+            });
+            chrome.storage.local.set({'product_images': $.unique(uniqueImages)});
+
+        });
+
     });
-
-
-
 
 });
 

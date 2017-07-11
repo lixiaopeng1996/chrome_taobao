@@ -169,6 +169,7 @@ function submitInfo(){
             chrome.storage.local.set({'return_product_id': data.data.id});
             $("#return_product_id").text(data.data.id);
             alert('产品创建成功, 可以开始上传图片了');
+            $("#image-container").css("display","block");
         },
         complete: function(XMLHttpRequest, textStatus){
             $("#submit-info").html("提交信息");

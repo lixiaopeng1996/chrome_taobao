@@ -119,6 +119,9 @@ $(function () {
 
     $("#upload-image").click(function () {
         var  imageType =  $("input[name='image-type']:checked").val();
+        if (!return_product_id) {
+            alert('请先创建产品');
+        }
         if (imageType == 'thumb') {
             var thumbImages = $(".thumbImages");
             $(".thumbImages").each(function () {
@@ -134,12 +137,9 @@ $(function () {
 
         } else {
             //http://ccshop.dev/rhsatmeljmog?key=fa94h9a2y5bv43n2zg3s&url=https://ss1.bdstun.png?v=md5&dw=600&dh=800&x=20&y=50&w=450&h=600&id=840&typeid=1&optionValue=红色
-
             var checkedOption = $("input[name='option-type']:checked").val();
             if (checkedOption) {
-                var src = $("#current-image").attr('src');
                 var src = $("#current-image").attr("src");
-
                 var x = $(".select-x").text();
                 var y = $(".select-y").text();
                 var w = $(".select-w").text();
@@ -150,11 +150,6 @@ $(function () {
                 } else {
                     alert('当前没有裁剪好的图片');
                 }
-
-
-
-
-
             } else {
                 alert("请选择一个现有选项");
             }
