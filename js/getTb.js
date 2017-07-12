@@ -73,6 +73,10 @@ chrome.storage.local.get('return_product_id', function (result) {
 });
 
 $(function() {
+    $(document.body).on('click', '#gototop', function() {
+        $('body,html').animate({scrollTop:0},1000);
+        return false;
+    });
     $(document.body).on('click', '.remove-option', function() {
         $(this).parent().remove();
     });

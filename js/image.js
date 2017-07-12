@@ -177,11 +177,6 @@ $(function () {
 
     }
 
-
-
-
-
-
     $("#image-container").css("display","none");
 });
 
