@@ -1,7 +1,7 @@
 $(function() {
     console.log('this is tmall');
     //createButton();
-    $("html, body").animate({ scrollTop: 1000 }, 2000);
+    //$("html, body").animate({ scrollTop: 1000 }, 2000);
     var tb_pname = getName();
     var tb_list_price = getListPrice();
     var tb_price = getPrice();
@@ -87,20 +87,20 @@ $(function() {
     }
 
     function getImage() {
-        //var images = new Array();
-        // $(document.body).on('mouseover', 'img', function(event) {
-        //     var width = this.clientWidth;
-        //     var height = this.clientHeight;
-        //     if(width > 300 && height > 300 && this.src){
-        //         images.push(this.src);
-        //       //  console.log(this.src);
-        //     }
-        //     var uniqueImages = [];
-        //     $.each(images, function(i, el){
-        //         if($.inArray(el, uniqueImages) === -1) uniqueImages.push(el);
-        //     });
-        //     chrome.storage.local.set({'product_images': $.unique(uniqueImages)});
-        // });
+        var images = new Array();
+        $(document.body).on('mouseover', 'img', function(event) {
+            var width = this.clientWidth;
+            var height = this.clientHeight;
+            if(width > 300 && height > 300 && this.src){
+                images.push(this.src);
+              //  console.log(this.src);
+            }
+            var uniqueImages = [];
+            $.each(images, function(i, el){
+                if($.inArray(el, uniqueImages) === -1) uniqueImages.push(el);
+            });
+            chrome.storage.local.set({'product_images': $.unique(uniqueImages)});
+        });
 
         // $(document).on('mouseover', 'body', function(event) {
         //     $(this).find('img').each(function (index, item) {
@@ -138,26 +138,26 @@ $(function() {
         $("body").append(button);
     }
 
-    $(document.body).on('click', '#page', function(event) {
-        alert(123);
-        var images = new Array();
-        $(this).find('img').each(function (index, item) {
-            var width = item.clientWidth;
-            var height = item.clientHeight;
-            if(width > 300 && height > 300 && this.src){
-
-                console.log(this.src);
-                images.push(this.src);
-            }
-            var uniqueImages = [];
-            $.each(images, function(i, el){
-                if($.inArray(el, uniqueImages) === -1) uniqueImages.push(el);
-            });
-            chrome.storage.local.set({'product_images': $.unique(uniqueImages)});
-
-        });
-
-    });
+    // $(document.body).on('click', '#page', function(event) {
+    //     alert(123);
+    //     var images = new Array();
+    //     $(this).find('img').each(function (index, item) {
+    //         var width = item.clientWidth;
+    //         var height = item.clientHeight;
+    //         if(width > 300 && height > 300 && this.src){
+    //
+    //             console.log(this.src);
+    //             images.push(this.src);
+    //         }
+    //         var uniqueImages = [];
+    //         $.each(images, function(i, el){
+    //             if($.inArray(el, uniqueImages) === -1) uniqueImages.push(el);
+    //         });
+    //         chrome.storage.local.set({'product_images': $.unique(uniqueImages)});
+    //
+    //     });
+    //
+    // });
 
 });
 
