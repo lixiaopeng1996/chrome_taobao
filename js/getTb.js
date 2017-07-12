@@ -88,7 +88,7 @@ $(function() {
     chrome.storage.local.get('shop_id_show', function (result) {
         var channels = result.shop_id_show;
         if (channels == "no") {
-            $("#product-shop-id").parent().remove();
+            $("#product-shop-id").parent().hide();
         }
     });
     // 默认产品状态
@@ -115,6 +115,8 @@ function submitInfo(){
     content.price = $("#product-price").val();
     content.amount = $("#product-store").val();
     content.status = $("#current-publish").text();
+    content.shop_id = $("#product-shop-id").val();
+
 
     if (!content.slug) {
         alert('请先完成翻译');

@@ -91,8 +91,8 @@ $(function () {
         var imgurl =  cropperObj[src].getCroppedCanvas().toDataURL();
         var img = document.createElement("img");
         img.src = imgurl;
-        var thumbImagesSrc = api_image+'?key=fa94h9a2y5bv43n2zg3s&url='+src+'&dw=600&dh=800&x='+x+'&y='+y+'&w='+w+'&h='+h+'&id='+return_product_id+'&typeid=1';
-        var featureImagesSrc = api_image+'?key=fa94h9a2y5bv43n2zg3s&url='+src+'&dw=600&dh=800&x='+x+'&y='+y+'&w='+w+'&h='+h+'&id='+return_product_id+'&typeid=2';
+        var thumbImagesSrc = api_image+'?key=fa94h9a2y5bv43n2zg3s&url='+src+'&dw=600&dh=800&x='+Math.round(x)+'&y='+Math.round(y)+'&w='+Math.round(w)+'&h='+Math.round(h)+'&id='+return_product_id+'&typeid=1';
+        var featureImagesSrc = api_image+'?key=fa94h9a2y5bv43n2zg3s&url='+src+'&dw=600&dh=800&x='+Math.round(x)+'&y='+Math.round(y)+'&w='+Math.round(w)+'&h='+Math.round(h)+'&id='+return_product_id+'&typeid=2';
         var noneSrc = '<img style="display: none;" class="thumbImages" data-src="'+thumbImagesSrc+'"><img style="display: none;" class="featureImages" data-src="'+featureImagesSrc+'">';
         var html = '<div class="col-md-4">'+noneSrc+'<img crossOrigin="Anonymous" src="'+imgurl+'" class="img-rounded"><span class="glyphicon glyphicon-remove-circle remove-crop-image"></span></div>';
         $("#image-select-content").append(html);
@@ -143,7 +143,7 @@ $(function () {
                 var w = $(".select-w").text();
                 var h = $(".select-h").text();
                 if (src) {
-                    var url = api_image+'?key=fa94h9a2y5bv43n2zg3s&url='+src+'&dw=600&dh=800&x='+x+'&y='+y+'&w='+w+'&h='+h+'&id='+return_product_id+'&typeid=1&optionValue='+checkedOption;
+                    var url = api_image+'?key=fa94h9a2y5bv43n2zg3s&url='+src+'&dw=600&dh=800&x='+Math.round(x)+'&y='+Math.round(y)+'&w='+Math.round(w)+'&h='+Math.round(h)+'&id='+return_product_id+'&typeid=1&optionValue='+checkedOption;
                     uploadImage(url);
                 } else {
                     alert('当前没有裁剪好的图片');
