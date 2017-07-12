@@ -83,6 +83,21 @@ $(function() {
     $(document.body).on('click', '.remove-feature', function() {
         $(this).parent().remove();
     });
+    $(document.body).on('click', '.glyphicon-align-justify', function() {
+
+    });
+
+    $("input[name='crop-type']").change(function () {
+        var type = $(this).val();
+        //alert(type);
+        if (type == "oto") {
+            $("#current-crop-size").text('1');
+        } else if (type == "ttf") {
+            $("#current-crop-size").text('0.75');
+        } else if (type == "free") {
+            $("#current-crop-size").text('NaN');
+        }
+    });
 
     // 是否显示店铺id
     chrome.storage.local.get('shop_id_show', function (result) {

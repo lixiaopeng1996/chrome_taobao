@@ -51,8 +51,9 @@ $(function () {
         $("#current-image").attr("src", src);
         $image = this;
         //new Cropper
+        var cropSize =  $("#current-crop-size").text();
         cropper = new Cropper($image, {
-            aspectRatio: 4 / 3,
+            aspectRatio: cropSize,
             zoomable: false,
             rotatable : false,
             autoCropArea: 0.8,
@@ -159,7 +160,7 @@ $(function () {
             type:"GET",
             url: src,
             beforeSend:function(){
-                $("#upload-image").html("上传中");
+                $("#upload-image").html("上传中...");
             },
             success:function(data){
                 console.log(data);
@@ -199,7 +200,7 @@ $(function () {
             });
         }
     }
-    $("#image-container").css("display","none");
+    //$("#image-container").css("display","none");
 });
 
 

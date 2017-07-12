@@ -16,7 +16,8 @@
     width: 100%;
     height: auto;
     z-index: 100;
-    background-color: rgba(0,0,0,0.5);
+    background: #ec971f;
+
 }
 #thumb-list {
     background: url("../images/bg.png") repeat-y;
@@ -26,12 +27,14 @@
 }
 .tool-bar{
     z-index: 100;
-    background: #e05239;
+    background: #339933;
     font-size: larger;
     height: 180px;
     line-height: 40px;
     position: fixed;
     cursor: pointer;
+    border: 3px solid #ec971f;
+    border-radius: 10px;
 }
 .tool-bar a {
     color: #ffffff;
@@ -44,7 +47,7 @@
 #image-select-content {
     position: relative;
     height: 1700px;
-    background: #60abe0;
+    background-image: url("../images/right.jpg");
 }
 #image-select-content img {
     width: 100%;
@@ -52,12 +55,12 @@
 }
 
 .col-md-7 h2 {
-    background: #60abe0;
+    background: url("../images/top.jpg");
     position: relative;
     margin-top: 0;
     text-align: center;
-    height: 60px;
-    line-height: 60px;
+    height: 80px;
+    line-height: 80px;
 }
 .col-md-7 img {
     display: block;
@@ -65,19 +68,32 @@
     cursor: pointer;
 }
 #thumb-list .glyphicon-remove {
-    position: relative;
+    position: absolute;
     cursor: pointer;
-    float: right;
-    top:-70px;
+    float: left;
+    top: 10px;
     font-size: 25px;
 }
+#thumb-list .glyphicon-align-justify {
+    position: absolute;
+    cursor: pointer;
+    float: left;
+    top: 50px;
+    font-size: 25px;
+}
+
 .remove-crop-image {
     position: absolute;
+    color: #ec971f;
 }
+
 input[name=image-type] {
     position: relative !important;
 }
 input[name=option-type] {
+    position: relative !important;
+}
+input[name=crop-type] {
     position: relative !important;
 }
 .option-list {
@@ -90,4 +106,7 @@ input[name=option-type] {
     bottom: 70px;
     z-index: 999;
     cursor: pointer;
+}
+.crop-option {
+    margin-left: -20px;
 }
