@@ -36,10 +36,8 @@ $(function () {
     thumbImages = [];
     featureImages = [];
 
-
     var api_image = '';
     var return_product_id = '';
-
 
     $(document.body).on('click', '.col-md-7 img', function(event) {
         api_image = $("#current-api-image").text();
@@ -161,22 +159,46 @@ $(function () {
             type:"GET",
             url: src,
             beforeSend:function(){
-
+                $("#upload-image").html("上传中");
             },
             success:function(data){
                 console.log(data);
+                notifyMe();
             },
             complete: function(XMLHttpRequest, textStatus){
-
+                $("#upload-image").html("上传");
             },
             error: function(){
                 alert('图片上传失败, 请联系开发者');
             }
         });
 
-
     }
 
+    function notifyMe() {
+        if (!("Notification" in window)) {
+            alert("浏览器不支持消息通知");
+        }
+        else if (Notification.permission === "granted") {
+            var message_notification = new Notification('操作成功', {
+                icon: '../images/icon48.png',
+                body: "您有一张图片上传成功..."
+            });
+            setTimeout(function(){
+                message_notification.close();
+            }, 2000);
+        }
+        else if (Notification.permission !== "denied") {
+            Notification.requestPermission(function (permission) {
+                if (permission === "granted") {
+                    var message_notification = new Notification("您可以正式接收消息通知了");
+                    setTimeout(function(){
+                        message_notification.close();
+                    }, 1000);
+                }
+            });
+        }
+    }
     $("#image-container").css("display","none");
 });
 

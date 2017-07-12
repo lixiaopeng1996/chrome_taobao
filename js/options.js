@@ -49,7 +49,22 @@ $(function () {
         $("#site_api_key").val(channels.site_api_key);
     });
 
+
     $("#default-options").click(function () {
+        // 允许通知
+        if (Notification.permission !== "denied") {
+            Notification.requestPermission(function (permission) {
+                if (permission === "granted") {
+                     var message_notification = new Notification('操作成功', {
+                         icon: '../images/icon48.png',
+                         body: "您现在可以正式接收来自我的通知了"
+                     });
+                    setTimeout(function(){
+                        message_notification.close();
+                    }, 1000);
+                }
+            });
+        }
         var url = './data/config.json';
         $.getJSON(url,function(result){
             $.each(result, function(i, field){
