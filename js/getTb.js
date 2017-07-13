@@ -55,7 +55,6 @@ chrome.storage.local.get('product_features', function (result) {
         var fea = item.split(':');
         var html = '<div class="col-md-2"><span class="glyphicon glyphicon-remove-circle remove-feature"></span><div class="form-group"><input name="feature" type="text" value="'+fea[0]+'" class="form-control"></div><div class="form-group"><input name="feature_value" type="text" value="'+fea[1]+'" class="form-control"></div></div>';
         featureBody.append(html);
-        //console.log(fea);
     });
 });
 
@@ -131,13 +130,10 @@ function submitInfo(){
     content.amount = $("#product-store").val();
     content.status = $("#current-publish").text();
     content.shop_id = $("#product-shop-id").val();
-
-
     if (!content.slug) {
         alert('请先完成翻译');
         return false;
     }
-
     var colors = [];
     $("input[name='colors']").each(function () {
         colors.push($(this).val());
@@ -170,13 +166,11 @@ function submitInfo(){
     content.features = features;
     var data = {};
     data.data = content;
-
     data.ccshop_apiuser = $("#current-api-user").text();
     data.ccshop_apikey = $("#current-api-key").text();
     var infoUrl = $("#current-api-info").text();
-    var imageUrl = $("#current-api-image").text();
+    //var imageUrl = $("#current-api-image").text();
     console.log(data);
-
     $.ajax({
         type:"POST",
         url:infoUrl,

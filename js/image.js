@@ -24,11 +24,11 @@ $(function () {
     });
 
     $("#preview-image").click(function () {
-        $("#image-container").css("display","block");
+        $("#image-container").slideDown();
     });
 
-    $("#thumb-list .glyphicon-remove").click(function () {
-        $("#image-container").css("display","none");
+    $("#close").click(function () {
+        $("#image-container").slideUp();
     });
 
     cropperObj = [];
@@ -118,9 +118,13 @@ $(function () {
 
     $("#upload-image").click(function () {
         var  imageType =  $("input[name='image-type']:checked").val();
-        if (!return_product_id) {
+
+        if (return_product_id == 0) {
             alert('请先创建产品');
+            return false;
         }
+
+        console.log(return_product_id);
         if (imageType == 'thumb') {
             var thumbImages = $(".thumbImages");
             $(".thumbImages").each(function () {
@@ -156,6 +160,7 @@ $(function () {
     });
 
     function uploadImage(src) {
+        console.log(src);
         $.ajax({
             type:"GET",
             url: src,
@@ -164,7 +169,11 @@ $(function () {
             },
             success:function(data){
                 console.log(data);
-                notifyMe();
+                if (data.status == 500) {
+                    alert('图片上传失败, 请联系开发者'+data.message);
+                } else {
+                    notifyMe();
+                }
             },
             complete: function(XMLHttpRequest, textStatus){
                 $("#upload-image").html("上传");
