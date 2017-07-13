@@ -23,6 +23,17 @@ chrome.storage.local.get('product_store', function (result) {
     $("#product-store").val(channels);
 });
 
+chrome.storage.local.get('product_slug', function (result) {
+    var channels = result.product_slug;
+    $("#product-slug").val(channels);
+});
+
+chrome.storage.local.get('product_shop_id', function (result) {
+    var channels = result.product_shop_id;
+    $("#product-shop-id").val(channels);
+});
+
+
 chrome.storage.local.get('product_option_colors', function (result) {
     var channels = result.product_option_colors;
     var colorsBody = $("#colors");
@@ -82,8 +93,9 @@ $(function() {
     $(document.body).on('click', '.remove-feature', function() {
         $(this).parent().remove();
     });
-    $(document.body).on('click', '.glyphicon-align-justify', function() {
-
+    $(document.body).on('blur', '#product-shop-id', function() {
+         var shopId = $(this).val();
+         chrome.storage.local.set({'product_shop_id': shopId});
     });
 
     $("input[name='crop-type']").change(function () {

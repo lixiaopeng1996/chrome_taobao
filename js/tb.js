@@ -11,7 +11,7 @@ $(function() {
     var tb_features = getFeatures();
     var tb_images = getImage();
     var tb_thumbs = getThumbs();
-
+    var tb_slug = getSlug();
 
 
 
@@ -36,7 +36,7 @@ $(function() {
     chrome.storage.local.set({'product_option_sizes': tb_sizes});
     chrome.storage.local.set({'product_features': tb_features});
     chrome.storage.local.set({'product_images': tb_images});
-
+    chrome.storage.local.set({'product_slug': tb_slug});
 
     function getName() {
         return $(".tb-main-title").data('title');
@@ -56,6 +56,20 @@ $(function() {
             return price;
         } else {
             return list_price[0];
+        }
+    }
+
+    function getSlug() {
+        var url = window.location.href;
+
+        var pattern = /id=(\d+)/;
+        var result = url.match(pattern);
+        if (result[1]) {
+            var num = result[1];
+            var y = num.toString();
+            return y.split("").reverse().join("");
+        } else {
+            return '';
         }
     }
 
@@ -92,15 +106,13 @@ $(function() {
     }
 
     function getImage() {
-
-
-
         var images = new Array();
         $("img").each(function(){
             var width = this.clientWidth;
             var height = this.clientHeight;
             if(width > 300 && height > 300 && this.src){
                 images.push(this.src);
+                console.log(this.src);
             }
         });
         var uniqueImages = [];
@@ -116,6 +128,7 @@ $(function() {
         $(document.body).on('mouseout', '.tb-viewer-thumb', function(event) {
             $(".tb-viewer-original-pic").each(function () {
                 thumbs.push(this.href);
+                console.log(this.href);
             });
             var uniqueThumbs = [];
             $.each(thumbs, function(i, el){

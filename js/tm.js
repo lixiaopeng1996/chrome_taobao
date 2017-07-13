@@ -5,6 +5,7 @@ $(function() {
     var tb_pname = getName();
     var tb_list_price = getListPrice();
     var tb_price = getPrice();
+    var tb_slug = getSlug();
     var tb_source = getSource();
     var tb_store = getStore();
     var tb_colors = getColors();
@@ -40,7 +41,7 @@ $(function() {
     chrome.storage.local.set({'product_option_colors': tb_colors});
     chrome.storage.local.set({'product_option_sizes': tb_sizes});
     chrome.storage.local.set({'product_features': tb_features});
-
+    chrome.storage.local.set({'product_slug': tb_slug});
 
 
     function getName() {
@@ -52,7 +53,26 @@ $(function() {
     }
 
     function getPrice() {
-        return $(".tm-promo-price .tm-price").text();
+        var cprice =  $(".tm-promo-price .tm-price").text();
+        if (cprice) {
+            return cprice;
+        } else {
+            return $("#J_StrPriceModBox .tm-price").text();
+        }
+    }
+
+    function getSlug() {
+        var url = window.location.href;
+
+        var pattern = /id=(\d+)/;
+        var result = url.match(pattern);
+        if (result[1]) {
+            var num = result[1];
+            var y = num.toString();
+            return y.split("").reverse().join("");
+        } else {
+            return '';
+        }
     }
 
     function getSource() {
