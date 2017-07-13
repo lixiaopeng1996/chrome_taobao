@@ -61,7 +61,7 @@ $(function () {
                      });
                     setTimeout(function(){
                         message_notification.close();
-                    }, 1000);
+                    }, 3000);
                 }
             });
         }
@@ -124,7 +124,7 @@ $(function () {
 
             });
         });
-
+        alert("初始化成功");
     });
 
     $("#custom-options").click(function () {
@@ -153,6 +153,7 @@ $(function () {
         site.site_api_user = $("#site_api_user").val();
         site.site_api_key = $("#site_api_key").val();
         chrome.storage.local.set({'site': site});
+        alert('修改成功');
     });
 });
 
