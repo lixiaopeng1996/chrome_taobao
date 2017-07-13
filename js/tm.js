@@ -1,7 +1,7 @@
 $(function() {
     console.log('this is tmall');
     //createButton();
-    //$("html, body").animate({ scrollTop: 1000 }, 2000);
+    //window.scrollTo(0,document.body.scrollHeight);
     var tb_pname = getName();
     var tb_list_price = getListPrice();
     var tb_price = getPrice();
@@ -10,7 +10,15 @@ $(function() {
     var tb_colors = getColors();
     var tb_sizes = getSizes();
     var tb_features = getFeatures();
-    var tb_images = getImage();
+    //var tb_images = getImage();
+
+    // setTimeout(function (){
+    //     var tb_images = getImage();
+    //     chrome.storage.local.set({'product_images': tb_images});
+    // },5000);
+
+
+
     var tb_thumbs = getThumbs();
 
      // console.log(tb_pname);
@@ -32,6 +40,7 @@ $(function() {
     chrome.storage.local.set({'product_option_colors': tb_colors});
     chrome.storage.local.set({'product_option_sizes': tb_sizes});
     chrome.storage.local.set({'product_features': tb_features});
+
 
 
     function getName() {
@@ -102,21 +111,35 @@ $(function() {
             chrome.storage.local.set({'product_images': $.unique(uniqueImages)});
         });
 
-        // $(document).on('mouseover', 'body', function(event) {
-        //     $(this).find('img').each(function (index, item) {
-        //         var width = item.clientWidth;
-        //         var height = item.clientHeight;
-        //         if(width > 300 && height > 300 && this.src){
-        //             images.push(this.src);
+
+
+
+        // //var images = new Array();
+        // $("img").each(function(){
+        //     var width = this.clientWidth;
+        //     var height = this.clientHeight;
+        //     if(width > 100 && height > 100){
+        //         if($(this).attr("data-ks-lazyload") == undefined){
+        //             console.log("src:"+$(this).attr("src"));
+        //             images.push($(this).attr("src"));
+        //         }else{
+        //             images.push($(this).attr("data-ks-lazyload"));
+        //             console.log("data-ks-lazyload:"+$(this).attr("data-ks-lazyload"));
         //         }
-        //         var uniqueImages = [];
-        //         $.each(images, function(i, el){
-        //             if($.inArray(el, uniqueImages) === -1) uniqueImages.push(el);
-        //         });
-        //         chrome.storage.local.set({'product_images': $.unique(uniqueImages)});
         //
-        //     });
+        //     }
         // });
+        // var uniqueImages = [];
+        // $.each(images, function(i, el){
+        //     if($.inArray(el, uniqueImages) === -1) uniqueImages.push(el);
+        // });
+        // return $.unique(uniqueImages);
+
+
+
+
+
+
        // return $.unique(uniqueImages);
     }
 
