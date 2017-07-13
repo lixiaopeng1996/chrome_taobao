@@ -14,6 +14,7 @@ chrome.storage.local.get(['product_list_price', 'product_freight'], function (re
     var listPrice   = parseFloat(result['product_list_price']);
     var freight = parseFloat(result['product_freight']);
     var currentPriceN = parseFloat($("#current-price-n").text());
+    $(".freight").text(freight);
     $("#product-list-price").val(parseInt((listPrice+freight)*currentPriceN));
 });
 

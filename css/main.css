@@ -128,3 +128,10 @@ input[name=crop-type] {
 .crop-option {
     margin-left: -20px;
 }
+.freight {
+    position: relative;
+    float: right;
+    margin-right: 40px;
+    bottom: 25px;
+    color: rgba(187,207,224,1);
+}

@@ -12,14 +12,7 @@ $(function() {
     var tb_sizes = getSizes();
     var tb_features = getFeatures();
     var tb_images = getImage();
-
-    // setTimeout(function (){
-    //     var tb_images = getImage();
-    //     chrome.storage.local.set({'product_images': tb_images});
-    // },5000);
-
-
-
+    var tb_freight = getFreight();
     var tb_thumbs = getThumbs();
 
      // console.log(tb_pname);
@@ -42,7 +35,7 @@ $(function() {
     chrome.storage.local.set({'product_option_sizes': tb_sizes});
     chrome.storage.local.set({'product_features': tb_features});
     chrome.storage.local.set({'product_slug': tb_slug});
-
+    chrome.storage.local.set({'product_freight': tb_freight});
 
     function getName() {
         return $.trim($("#J_DetailMeta h1").text());
@@ -72,6 +65,17 @@ $(function() {
             return y.split("").reverse().join("");
         } else {
             return '';
+        }
+    }
+
+    function getFreight() {
+        var text =$("#J_PostageToggleCont").text();
+        var pattern = /\d+/;
+        var result = text.match(pattern);
+        if (result) {
+            return result[0];
+        } else {
+            return 0;
         }
     }
 
