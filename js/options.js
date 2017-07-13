@@ -1,4 +1,12 @@
 $(function () {
+
+    // 背景设置
+    chrome.storage.local.get('bgSrc', function (result) {
+        var imageUrl = result.bgSrc;
+
+        $("body").css('background-image', 'url(' + imageUrl + ')');
+    });
+
     // 页面加载
     chrome.storage.local.get('imageSize', function (result) {
         var channels = result.imageSize;
@@ -149,6 +157,10 @@ $(function () {
 
         var feature_filter = $("#feature_filter").val();
         chrome.storage.local.set({'feature_filter': feature_filter});
+
+        var bgSrc = $("input[name='bg-src']:checked").val();
+        console.log(bgSrc);
+        chrome.storage.local.set({'bgSrc': bgSrc});
 
         var site = {};
         site.site_name = $("#site_name").val();

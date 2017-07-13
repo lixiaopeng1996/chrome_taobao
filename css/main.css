@@ -1,3 +1,10 @@
+body {
+    background: url("../images/bg/bg1.jpg");
+    background-size: cover;
+}
+.container {
+    background: #FFFFFF;
+}
 .remove-option{
     position: relative;
     left: 205px;

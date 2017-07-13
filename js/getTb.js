@@ -9,6 +9,12 @@ chrome.storage.local.get('site', function (result) {
     $("#current-price-n").text(channels.site_price_n);
 });
 
+// 背景设置
+chrome.storage.local.get('bgSrc', function (result) {
+    var imageUrl = result.bgSrc;
+
+    $("body").css('background-image', 'url(' + imageUrl + ')');
+});
 
 chrome.storage.local.get(['product_list_price', 'product_freight'], function (result) {
     var listPrice   = parseFloat(result['product_list_price']);
