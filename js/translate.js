@@ -1,6 +1,10 @@
 $(function () {
     $("#one-translate").click(function () {
         var product_name = $("#product-name").val();
+        if (!product_name) {
+            alert("没有产品名");
+            return false;
+        }
         var urls = {};
         urls.name = 'https://www.googleapis.com/language/translate/v2?q='+product_name+'&target=ja&key=AIzaSyArw8bJc450lGPIaYBoJzQIijqsArKksJA';
         urls.slug = 'https://www.googleapis.com/language/translate/v2?q='+product_name+'&target=en&key=AIzaSyArw8bJc450lGPIaYBoJzQIijqsArKksJA';

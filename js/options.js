@@ -47,6 +47,8 @@ $(function () {
         $("#site_api_user").val(channels.site_api_user);
 
         $("#site_api_key").val(channels.site_api_key);
+
+        $("#site_price_n").val(channels.site_price_n);
     });
 
 
@@ -102,12 +104,14 @@ $(function () {
                    $("#site_api_image").val(field.site_api_image);
                    $("#site_api_user").val(field.site_api_user);
                    $("#site_api_key").val(field.site_api_key);
+                   $("#site_price_n").val(field.site_price_n);
 
                    site.site_name = field.name;
                    site.site_api_info = field.site_api_info;
                    site.site_api_image = field.site_api_image;
                    site.site_api_user = field.site_api_user;
                    site.site_api_key = field.site_api_key;
+                   site.site_price_n = field.site_price_n;
                    chrome.storage.local.set({'site': site});
 
                }
