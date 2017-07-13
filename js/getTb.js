@@ -3,14 +3,30 @@ chrome.storage.local.get('product_name', function (result) {
     $("#product-name").val(channels);
 });
 
-chrome.storage.local.get('product_list_price', function (result) {
-    var channels = result.product_list_price;
-    $("#product-list-price").val(channels);
+// 默认价格倍数
+chrome.storage.local.get('site', function (result) {
+    var channels = result.site;
+    $("#current-price-n").text(channels.site_price_n);
 });
 
-chrome.storage.local.get('product_price', function (result) {
-    var channels = result.product_price;
-    $("#product-price").val(channels);
+
+chrome.storage.local.get(['product_list_price', 'product_freight'], function (result) {
+    var listPrice   = parseFloat(result['product_list_price']);
+    var freight = parseFloat(result['product_freight']);
+    var currentPriceN = parseFloat($("#current-price-n").text());
+    $("#product-list-price").val(parseInt((listPrice+freight)*currentPriceN));
+});
+
+chrome.storage.local.get(['product_price', 'product_freight'], function (result) {
+    var price   = parseFloat(result['product_price']);
+    var freight = parseFloat(result['product_freight']);
+    var currentPriceN = parseFloat($("#current-price-n").text());
+    console.log(price);
+    console.log(freight);
+    console.log(currentPriceN);
+
+
+    $("#product-price").val(parseInt((price+freight)*currentPriceN));
 });
 
 chrome.storage.local.get('product_source', function (result) {

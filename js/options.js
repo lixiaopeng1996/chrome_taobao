@@ -156,6 +156,7 @@ $(function () {
         site.site_api_image = $("#site_api_image").val();
         site.site_api_user = $("#site_api_user").val();
         site.site_api_key = $("#site_api_key").val();
+        site.site_price_n = $("#site_price_n").val();
         chrome.storage.local.set({'site': site});
         alert('修改成功');
     });

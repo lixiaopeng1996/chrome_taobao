@@ -12,6 +12,7 @@ $(function() {
     var tb_images = getImage();
     var tb_thumbs = getThumbs();
     var tb_slug = getSlug();
+    var tb_freight = getFreight();
 
 
 
@@ -37,6 +38,7 @@ $(function() {
     chrome.storage.local.set({'product_features': tb_features});
     chrome.storage.local.set({'product_images': tb_images});
     chrome.storage.local.set({'product_slug': tb_slug});
+    chrome.storage.local.set({'product_freight': tb_freight});
 
     function getName() {
         return $(".tb-main-title").data('title');
@@ -56,6 +58,17 @@ $(function() {
             return price;
         } else {
             return list_price[0];
+        }
+    }
+
+    function getFreight() {
+        var text =$("#J_WlServiceTitle").text();
+        var pattern = /\d+/;
+        var result = text.match(pattern);
+        if (result) {
+            return result[0];
+        } else {
+            return 0;
         }
     }
 
