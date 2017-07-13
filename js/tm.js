@@ -10,7 +10,7 @@ $(function() {
     var tb_colors = getColors();
     var tb_sizes = getSizes();
     var tb_features = getFeatures();
-    //var tb_images = getImage();
+    var tb_images = getImage();
 
     // setTimeout(function (){
     //     var tb_images = getImage();
@@ -102,7 +102,7 @@ $(function() {
             var height = this.clientHeight;
             if(width > 300 && height > 300 && this.src){
                 images.push(this.src);
-              //  console.log(this.src);
+                console.log(this.src);
             }
             var uniqueImages = [];
             $.each(images, function(i, el){

@@ -55,7 +55,6 @@
 }
 
 .col-md-7 h2 {
-    background: url("../images/top.jpg");
     position: relative;
     margin-top: 0;
     text-align: center;
@@ -67,11 +66,22 @@
     margin: 0 auto;
     cursor: pointer;
 }
+#thumb-list {
+    border: 3px solid #ec971f;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+}
+
+#image-list {
+    border: 3px solid #ec971f;
+    border-top: none;
+    border-bottom: none;
+}
 #thumb-list .glyphicon-remove {
     position: absolute;
     cursor: pointer;
     float: left;
-    top: 10px;
+    top: 7px;
     font-size: 25px;
 }
 #thumb-list .glyphicon-align-justify {
