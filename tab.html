@@ -32,13 +32,16 @@
                         裁图比例选择:
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="crop-type" value="oto"> 1:1
+                        <input type="radio" name="crop-type" value="1"> 1 / 1
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="crop-type" checked value="ttf"> 3:4
+                      <input type="radio" name="crop-type" value="0.5"> 1 / 2
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="crop-type" checked value="0.75"> 3 / 4
                     </label>
                     <label class="radio-inline" title="选项图默认上传最后操作的图片">
-                        <input type="radio" name="crop-type" value="free"> 自由
+                        <input type="radio" name="crop-type" value="NaN"> 自由
                     </label>
                 </div>
                 <p>
@@ -109,12 +112,12 @@
                     <div class="form-group">
                         <label for="product-list-price">市场价格</label>
                         <input type="text" class="form-control" id="product-list-price">
-                        <span class="freight"></span>
+                        <span class="freights">运费:<label class="freight"></label></span>
                     </div>
                     <div class="form-group">
                         <label for="product-price">现行价格</label>
                         <input type="text" class="form-control" id="product-price">
-                        <span class="freight"></span>
+                        <span class="freights">运费:<label class="freight"></label></span>
                     </div>
                     <div class="form-group">
                         <label for="product-source">货源链接</label>

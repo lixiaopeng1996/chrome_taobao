@@ -123,14 +123,7 @@ $(function() {
 
     $("input[name='crop-type']").change(function () {
         var type = $(this).val();
-        //alert(type);
-        if (type == "oto") {
-            $("#current-crop-size").text('1');
-        } else if (type == "ttf") {
-            $("#current-crop-size").text('0.75');
-        } else if (type == "free") {
-            $("#current-crop-size").text('NaN');
-        }
+        $("#current-crop-size").text(type);
     });
 
     // 是否显示店铺id
